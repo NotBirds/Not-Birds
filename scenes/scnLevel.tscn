@@ -1,17 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/scnSlingshot.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/idle/3.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/idle/1.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/idle/2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 518, 10 )
 
 [node name="nLevel" type="Node2D"]
 
@@ -23,9 +16,15 @@ scale = Vector2( 0.2, 0.2 )
 position = Vector2( 64, -296 )
 current = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -392, -29 )
-scale = Vector2( 0.143766, 0.136364 )
-frames = SubResource( 1 )
-frame = 1
-playing = true
+[node name="sbTemp_floor" type="StaticBody2D" parent="."]
+position = Vector2( -450, -7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sbTemp_floor"]
+position = Vector2( 508, 0 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="sbTemp_floor/CollisionShape2D"]
+position = Vector2( -7.62939e-06, 4 )
+rotation = 1.56098
+scale = Vector2( 0.5, 2.11 )
+texture = ExtResource( 7 )

@@ -14,6 +14,10 @@ config/name="Not Birds"
 run/main_scene="res://scenes/scnLevel.tscn"
 config/icon="res://assets/icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
