@@ -11,6 +11,8 @@ extents = Vector2( 518, 10 )
 [node name="nSlingshot" parent="." instance=ExtResource( 1 )]
 position = Vector2( -205, -78 )
 scale = Vector2( 0.2, 0.2 )
+speed_modifier = 5.0
+max_radius = 400.0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 64, -296 )

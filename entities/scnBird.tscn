@@ -24,5 +24,4 @@ shape = SubResource( 1 )
 [node name="asAnimation" type="AnimatedSprite" parent="csHitbox"]
 position = Vector2( -7, 31 )
 frames = SubResource( 2 )
-frame = 1
 playing = true

@@ -46,6 +46,7 @@ shape = SubResource( 1 )
 [node name="asNot_bird" type="AnimatedSprite" parent="."]
 position = Vector2( -580, 271 )
 frames = SubResource( 2 )
+frame = 2
 playing = true
 
 [connection signal="input_event" from="aSlingshot_Hitbox" to="." method="_on_aSlingshot_Hitbox_input_event"]
