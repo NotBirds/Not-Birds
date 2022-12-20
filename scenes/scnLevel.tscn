@@ -61,11 +61,9 @@ self_modulate = Color( 0.565954, 0.826668, 0.899902, 1 )
 [node name="plank7" parent="Planks" instance=ExtResource( 2 )]
 position = Vector2( 98, -239 )
 rotation = 0.410469
-scale = Vector2( 1, 1 )
 
 [node name="plank6" parent="Planks" instance=ExtResource( 2 )]
 position = Vector2( 171, -240 )
 rotation = -0.386016
-scale = Vector2( 1, 1 )
 
 [editable path="Planks/plank5"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/glass.mp3-d0195592ec32077b29f5015c29f3b908.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/glass.mp3"
+dest_files=[ "res://.import/glass.mp3-d0195592ec32077b29f5015c29f3b908.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

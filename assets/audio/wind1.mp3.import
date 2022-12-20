@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wind1.mp3-bbed0b80a23124f5a6a01a70d878d70d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/wind1.mp3"
+dest_files=[ "res://.import/wind1.mp3-bbed0b80a23124f5a6a01a70d878d70d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

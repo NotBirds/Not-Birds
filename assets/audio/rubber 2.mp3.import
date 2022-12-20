@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rubber 2.mp3-3a29e787a13da38c7c162c9d058b549d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/rubber 2.mp3"
+dest_files=[ "res://.import/rubber 2.mp3-3a29e787a13da38c7c162c9d058b549d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
