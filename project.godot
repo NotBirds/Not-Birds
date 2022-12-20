@@ -35,9 +35,17 @@ leftMouse={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Planks"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="World"
+
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/default_gravity=980
 
 [rendering]
 

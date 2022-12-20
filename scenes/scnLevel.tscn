@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Entities/scnPlank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -11,7 +12,7 @@ extents = Vector2( 518, 10 )
 [node name="nSlingshot" parent="." instance=ExtResource( 1 )]
 position = Vector2( -205, -78 )
 scale = Vector2( 0.2, 0.2 )
-speed_modifier = 5.0
+speed_modifier = 15.0
 max_radius = 400.0
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -30,3 +31,41 @@ position = Vector2( -7.62939e-06, 4 )
 rotation = 1.56098
 scale = Vector2( 0.5, 2.11 )
 texture = ExtResource( 7 )
+
+[node name="Planks" type="Node" parent="."]
+
+[node name="plank8" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 131, -520 )
+
+[node name="plank2" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 134, -166 )
+rotation = 1.56169
+
+[node name="plank" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 79, -89 )
+
+[node name="plank3" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 191, -90 )
+
+[node name="plank4" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 255, -83 )
+rotation = -0.712141
+
+[node name="plank5" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 19, -78 )
+rotation = 0.632535
+
+[node name="Sprite" parent="Planks/plank5" index="0"]
+self_modulate = Color( 0.565954, 0.826668, 0.899902, 1 )
+
+[node name="plank7" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 98, -239 )
+rotation = 0.410469
+scale = Vector2( 1, 1 )
+
+[node name="plank6" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 171, -240 )
+rotation = -0.386016
+scale = Vector2( 1, 1 )
+
+[editable path="Planks/plank5"]
