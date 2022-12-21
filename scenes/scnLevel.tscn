@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/Entities/scnSlingshot.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Entities/scnPlank.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/scnPlank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]

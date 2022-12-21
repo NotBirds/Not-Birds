@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Not Birds"
-run/main_scene="res://scenes/scnLevel.tscn"
+run/main_scene="res://scenes/nLevel1.tscn"
 config/icon="res://assets/icon.png"
 
 [debug]
