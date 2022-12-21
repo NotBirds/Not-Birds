@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/musica_de_la_tienda.mp3-f61ec65f4772dfe2e92844eb06d9f521.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/musica_de_la_tienda.mp3"
+dest_files=[ "res://.import/musica_de_la_tienda.mp3-f61ec65f4772dfe2e92844eb06d9f521.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

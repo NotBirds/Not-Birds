@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Not Birds"
-run/main_scene="res://scenes/scnLevel.tscn"
+run/main_scene="res://levels/nLevel1.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+Global="*res://scenes/scnGlobal.tscn"
 
 [debug]
 
@@ -24,6 +28,7 @@ window/size/width=1920
 window/size/height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+<<<<<<<HEADwindow/stretch/mode="viewport"
 
 [gui]
 
@@ -51,8 +56,6 @@ leftMouse={
 
 [physics]
 
-common/physics_fps=240
-common/physics_jitter_fix=1.0
 common/enable_pause_aware_picking=true
 2d/default_gravity=980
 
