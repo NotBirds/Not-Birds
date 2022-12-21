@@ -37,5 +37,6 @@ func damage(value):
 func die():
 	death = true
 	$Sprite.visible = false;
-	$physicsCollider.disabled = true;
+	
+	$physicsCollider.set_deferred("disabled",true);
 	print("Died")

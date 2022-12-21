@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			self.position = _target.normalized() * (_target.length() -  Dead_Zone) * camera_speed
 	if Input.is_action_pressed("rightMouse"):
-		var selector = get_parent().get_node("scnBird.tscn")
+		var selector = get_parent().get_node("res://scenes/entities/scnBird.tscn")
 
 func _on_aLoock_mouse_entered():
 	can_be_used = false
