@@ -3,7 +3,7 @@ var can_be_used = false;
 var mouse_pos
 onready var top_sling = $lTop_sling
 onready var down_sling = $sTexture/lDown_sling
-onready var bird = preload("res://entities/scnBird.tscn")
+onready var bird = preload("res://scenes/Entities/scnBird.tscn")
 
 export(float) var speed_modifier
 export(float) var max_radius
