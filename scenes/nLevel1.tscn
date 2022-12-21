@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/entities/scnSlingshot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/display.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/entities/scnPlank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=8]
 [ext_resource path="res://assets/audio/Ambience - Copy.mp3" type="AudioStream" id=9]
+[ext_resource path="res://scenes/entities/Enemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1973, 17.5 )
@@ -83,12 +84,14 @@ position = Vector2( 899, 668 )
 position = Vector2( 823, 538 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="world_objects"]
+visible = false
 mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world_objects/RigidBody2D"]
 position = Vector2( 41.7432, 68.3438 )
 scale = Vector2( 0.94837, 0.915625 )
 polygon = PoolVector2Array( 360, 739, 379, 678, 434, 680, 448, 717, 492, 606, 559, 550, 705, 750 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="world_objects/RigidBody2D/CollisionPolygon2D"]
 modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
@@ -128,6 +131,12 @@ texture = ExtResource( 6 )
 stream = ExtResource( 9 )
 volume_db = 10.0
 autoplay = true
+
+[node name="plank" parent="." instance=ExtResource( 10 )]
+position = Vector2( 759, 696 )
+
+[node name="plank2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 659, 685 )
 
 [connection signal="mouse_entered" from="Camera/aLoock" to="Camera" method="_on_aLoock_mouse_entered"]
 [connection signal="mouse_exited" from="Camera/aLoock" to="Camera" method="_on_aLoock_mouse_exited"]
