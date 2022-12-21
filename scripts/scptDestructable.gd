@@ -15,6 +15,8 @@ func _on_plank_body_entered(body):
 				$audioCollision.play()
 			if impact_velocity > 80:
 				damage(impact_velocity * body.mass * death_treshold)
+	else:
+		pass
 
 func _ready():
 	$audioCollision.pitch_scale = base_collision_pitch
@@ -37,5 +39,4 @@ func damage(value):
 func die():
 	death = true
 	$Sprite.visible = false;
-	$physicsCollider.disabled = true;
-	print("Died")
+	$physicsCollider.set_deferred("disabled", true)

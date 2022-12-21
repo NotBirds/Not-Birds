@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Entities/scnSlingshot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Entities/scnPlank.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Entities/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -52,11 +53,8 @@ position = Vector2( 255, -83 )
 rotation = -0.712141
 
 [node name="plank5" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 19, -78 )
+position = Vector2( 356, -148 )
 rotation = 0.632535
-
-[node name="Sprite" parent="Planks/plank5" index="0"]
-self_modulate = Color( 0.565954, 0.826668, 0.899902, 1 )
 
 [node name="plank7" parent="Planks" instance=ExtResource( 2 )]
 position = Vector2( 98, -239 )
@@ -66,4 +64,5 @@ rotation = 0.410469
 position = Vector2( 171, -240 )
 rotation = -0.386016
 
-[editable path="Planks/plank5"]
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( -7, -96 )

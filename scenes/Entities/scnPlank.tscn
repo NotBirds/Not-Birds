@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/audio/wood2.mp3" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 63 )
+extents = Vector2( 9.5, 63 )
 
 [node name="plank" type="RigidBody2D"]
 collision_layer = 2
@@ -23,6 +23,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 
 [node name="physicsCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 0 )
 shape = SubResource( 1 )
 
 [node name="audioCollision" type="AudioStreamPlayer2D" parent="."]
