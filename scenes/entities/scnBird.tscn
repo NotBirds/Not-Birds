@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sprites/front/1.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/front/3.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/front/2.png" type="Texture" id=3]
+[ext_resource path="res://scripts/scptBird.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/dead.mp3" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 105.019
+
+[node name="rbBird" type="RigidBody2D"]
+script = ExtResource( 4 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.4, 6.2 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="csHitbox" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.223
+autostart = true
+
+[node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

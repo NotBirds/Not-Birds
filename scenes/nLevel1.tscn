@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/entities/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/display.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/backgraund.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/rando.png" type="Texture" id=4]
+[ext_resource path="res://scripts/scptCamera.gd" type="Script" id=5]
+[ext_resource path="res://assets/sprites/Black_bar.PNG" type="Texture" id=6]
+[ext_resource path="res://scenes/entities/scnPlank.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sprites/wood.png" type="Texture" id=8]
+[ext_resource path="res://assets/audio/Ambience - Copy.mp3" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1973, 17.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 197.756, 223.353 )
+
+[node name="nLevel" type="Node2D"]
+
+[node name="parallax_background" type="ParallaxBackground" parent="."]
+
+[node name="Black_bar3" type="Sprite" parent="parallax_background"]
+show_behind_parent = true
+position = Vector2( 7153, 8488 )
+scale = Vector2( 12.35, 96.4398 )
+texture = ExtResource( 6 )
+
+[node name="plLayer2" type="ParallaxLayer" parent="parallax_background"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 3960, 0 )
+
+[node name="Sprite" type="Sprite" parent="parallax_background/plLayer2"]
+position = Vector2( 1971, 385 )
+texture = ExtResource( 3 )
+
+[node name="plLayer1" type="ParallaxLayer" parent="parallax_background"]
+motion_mirroring = Vector2( 3900, 0 )
+
+[node name="Sprite" type="Sprite" parent="parallax_background/plLayer1"]
+position = Vector2( 1967, 546.75 )
+scale = Vector2( 1, 1.0242 )
+texture = ExtResource( 2 )
+
+[node name="Black_bar2" type="Sprite" parent="parallax_background"]
+position = Vector2( 902, -52 )
+scale = Vector2( 2.62374, 4.77782 )
+texture = ExtResource( 6 )
+
+[node name="nSlingshot" parent="." instance=ExtResource( 1 )]
+position = Vector2( 222, 665 )
+scale = Vector2( 0.2, 0.2 )
+speed_modifier = 15.0
+max_radius = 400.0
+
+[node name="sbTemp_floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sbTemp_floor"]
+position = Vector2( 1968, 754 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 5 )
+
+[node name="aLoock" type="Area2D" parent="Camera"]
+
+[node name="csHit_box" type="CollisionShape2D" parent="Camera/aLoock"]
+position = Vector2( 167.609, 589.431 )
+rotation = 1.58116
+shape = SubResource( 2 )
+
+[node name="world_objects" type="Node" parent="."]
+
+[node name="plank" parent="world_objects" instance=ExtResource( 7 )]
+position = Vector2( 825, 666 )
+
+[node name="plank2" parent="world_objects" instance=ExtResource( 7 )]
+position = Vector2( 899, 668 )
+
+[node name="plank3" parent="world_objects" instance=ExtResource( 7 )]
+position = Vector2( 823, 538 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="world_objects"]
+mode = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world_objects/RigidBody2D"]
+position = Vector2( 41.7432, 68.3438 )
+scale = Vector2( 0.94837, 0.915625 )
+polygon = PoolVector2Array( 360, 739, 379, 678, 434, 680, 448, 717, 492, 606, 559, 550, 705, 750 )
+
+[node name="Sprite" type="Sprite" parent="world_objects/RigidBody2D/CollisionPolygon2D"]
+modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
+position = Vector2( 520.11, 629.795 )
+scale = Vector2( 0.792598, 0.751756 )
+texture = ExtResource( 4 )
+
+[node name="parallax_foreground" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="cuadrado" type="ParallaxLayer" parent="parallax_foreground"]
+visible = false
+motion_scale = Vector2( 1.5, 1 )
+
+[node name="Sprite" type="Sprite" parent="parallax_foreground/cuadrado"]
+modulate = Color( 0.611765, 0.611765, 0.611765, 1 )
+position = Vector2( 528, 650.333 )
+scale = Vector2( 0.848828, 0.767148 )
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="parallax_foreground"]
+motion_scale = Vector2( 5, 1 )
+
+[node name="Sprite" type="Sprite" parent="parallax_foreground/ParallaxLayer"]
+modulate = Color( 0.329412, 0.329412, 0.329412, 1 )
+position = Vector2( 1249, 859 )
+rotation = 1.5708
+scale = Vector2( 2.3984, 6.12134 )
+texture = ExtResource( 8 )
+
+[node name="Black_bar" type="Sprite" parent="parallax_foreground"]
+position = Vector2( 966.5, 1019.38 )
+scale = Vector2( 2.63763, 4.03218 )
+texture = ExtResource( 6 )
+
+[node name="bgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 10.0
+autoplay = true
+
+[connection signal="mouse_entered" from="Camera/aLoock" to="Camera" method="_on_aLoock_mouse_entered"]
+[connection signal="mouse_exited" from="Camera/aLoock" to="Camera" method="_on_aLoock_mouse_exited"]
