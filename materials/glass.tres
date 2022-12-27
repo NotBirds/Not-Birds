@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform float scale = 5.0;
+
+void fragment() {
+	vec4 noiseTexture = texture(noise, vec2(
+		UV.x * scale,
+		UV.y * scale * (TEXTURE_PIXEL_SIZE.x/TEXTURE_PIXEL_SIZE.y)));
+	vec4 backTexture = texture(SCREEN_TEXTURE, SCREEN_UV + noiseTexture.r * 0.1);
+	COLOR = backTexture;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=7]
+period = 9.0
+
+[sub_resource type="NoiseTexture" id=6]
+seamless = true
+noise = SubResource( 7 )
+
+[resource]
+shader = SubResource( 3 )
+shader_param/scale = 100.0
+shader_param/noise = SubResource( 6 )
