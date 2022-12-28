@@ -1,33 +1,23 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/entities/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/foregrounds/fg1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/backgrounds/bg1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/rando.png" type="Texture" id=4]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sprites/Black_bar.PNG" type="Texture" id=6]
-[ext_resource path="res://scenes/entities/scnPlank.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/Ambience - Copy.mp3" type="AudioStream" id=9]
-[ext_resource path="res://scenes/entities/Enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/levelObjects/Enemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1973, 17.5 )
 
 [node name="nLevel" type="Node2D"]
 
-[node name="Black_bar3" type="Sprite" parent="."]
-show_behind_parent = true
-position = Vector2( 7153, 8488 )
-scale = Vector2( 12.35, 96.4398 )
-texture = ExtResource( 6 )
-
 [node name="parallax_background" parent="." instance=ExtResource( 3 )]
 
 [node name="nSlingshot" parent="." instance=ExtResource( 1 )]
 position = Vector2( 222, 665 )
-scale = Vector2( 0.2, 0.2 )
-speed_modifier = 15.0
-max_radius = 400.0
 
 [node name="sbTemp_floor" type="StaticBody2D" parent="."]
 
@@ -46,7 +36,7 @@ position = Vector2( 825, 666 )
 position = Vector2( 899, 668 )
 
 [node name="plank3" parent="world_objects" instance=ExtResource( 7 )]
-position = Vector2( 823, 538 )
+position = Vector2( 825, 537 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="world_objects"]
 visible = false

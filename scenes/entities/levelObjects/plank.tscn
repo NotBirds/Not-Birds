@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 63 )
 
-[node name="plank" type="RigidBody2D"]
+[node name="plank2" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 15
 continuous_cd = 2
