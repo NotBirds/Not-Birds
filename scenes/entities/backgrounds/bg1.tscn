@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/backgraund.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/display.png" type="Texture" id=3]
+[ext_resource path="res://materials/glass.tres" type="Material" id=4]
+
+[node name="parallax_background" type="ParallaxBackground"]
+
+[node name="plLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 3960, 0 )
+
+[node name="Sprite" type="Sprite" parent="plLayer2"]
+position = Vector2( 1971, 385 )
+texture = ExtResource( 2 )
+
+[node name="plLayer1" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 3900, 0 )
+
+[node name="glass_texture" type="Sprite" parent="plLayer1"]
+material = ExtResource( 4 )
+position = Vector2( 1967, 546.75 )
+scale = Vector2( 1, 1.0242 )
+texture = ExtResource( 3 )
+
+[node name="glass" type="Sprite" parent="plLayer1"]
+position = Vector2( 1967, 546.75 )
+scale = Vector2( 1, 1.0242 )
+texture = ExtResource( 3 )
