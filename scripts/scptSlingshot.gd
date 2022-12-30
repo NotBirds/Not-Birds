@@ -1,6 +1,7 @@
 extends Node2D
 var can_be_used = false;
 var mouse_pos
+onready var target_pos = position
 onready var top_sling = $lTop_sling
 onready var down_sling = $lDown_sling
 onready var aim_sound = $aimSound
@@ -27,6 +28,9 @@ func _input(_event):
 			aim_sound.stop()
 			throw_not_bird($asNot_bird.global_position)
 
+func _process(_delta):
+	position = lerp(position, target_pos, 0.2)
+
 func set_sling_visible(show):
 	top_sling.visible = show;
 	down_sling.visible = show;
@@ -46,3 +50,6 @@ func throw_not_bird(last_mouse_pos):
 	var speed = $pCenter.global_position - last_mouse_pos
 	real_bird.apply_central_impulse(speed * speed_modifier)
 	$asNot_bird.hide()
+
+func _on_move_slingshot(new_pos: Vector2):
+	target_pos = new_pos

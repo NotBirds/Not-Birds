@@ -1,14 +1,15 @@
 [gd_scene format=2]
 
 [node name="Ground" type="StaticBody2D"]
+collision_layer = 8
 
 [node name="polygon" type="Polygon2D" parent="."]
 color = Color( 0.270588, 0.184314, 0.164706, 1 )
-polygon = PoolVector2Array( 335, 102, 384, 1013, 1316, 973, 1317, 446, 1903, 441, 1908, 1302, -391, 1378, -378, -413, 1695, -467, 1909, 187, 1314, 174, 1314, 87 )
+polygon = PoolVector2Array( 335, 94, 336, 1013, 1316, 1014, 1317, 446, 1903, 441, 1908, 1302, -391, 1378, -378, -413, 1695, -467, 1909, 176, 1314, 174, 1314, 87 )
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PoolVector2Array( 335, 102, 384, 1013, 1316, 973, 1317, 446, 1903, 441, 1908, 1302, -391, 1378, -378, -413, 1695, -467, 1909, 187, 1314, 174, 1314, 87 )
+polygon = PoolVector2Array( 335, 94, 336, 1013, 1316, 1014, 1317, 446, 1903, 441, 1908, 1302, -391, 1378, -378, -413, 1695, -467, 1909, 176, 1314, 174, 1314, 87 )
 __meta__ = {
 "_editor_description_": ""
 }

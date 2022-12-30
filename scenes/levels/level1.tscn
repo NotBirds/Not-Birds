@@ -1,19 +1,192 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/levelObjects/scnGround.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/levelObjects/plank_glass_big.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/levelObjects/slingshot_mover.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/levelObjects/material_pickup.tscn" type="PackedScene" id=8]
+
+[sub_resource type="SegmentShape2D" id=2]
+b = Vector2( 949, 0 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 100, 0 )
+b = Vector2( 495, 0 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 230.5, 140.5 )
+
+[sub_resource type="SegmentShape2D" id=4]
+b = Vector2( 843, 0 )
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Camera" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [ 3508.0 ]
+}
 
 [node name="nSlingshot" parent="." instance=ExtResource( 2 )]
-position = Vector2( 552, 937 )
+visible = false
+position = Vector2( 554, 930 )
 
-[node name="Ground" parent="." instance=ExtResource( 3 )]
+[node name="part1" type="Node" parent="."]
 
-[node name="plank" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1362, 307 )
+[node name="Ground" parent="part1" instance=ExtResource( 3 )]
+
+[node name="polygon" parent="part1/Ground" index="0"]
+polygon = PoolVector2Array( 300, 100, 300, 1000, 1300, 1000, 1300, 500, 1900, 500, 1908, 1302, -400, 1300, -400, -500, 1900, -500, 1900, 200, 1300, 200, 1300, 100 )
+
+[node name="collision" parent="part1/Ground" index="1"]
+polygon = PoolVector2Array( 300, 100, 300, 1000, 1300, 1000, 1300, 500, 1900, 500, 1908, 1302, -400, 1300, -400, -500, 1900, -500, 1900, 200, 1300, 200, 1300, 100 )
+
+[node name="plank" parent="part1" instance=ExtResource( 4 )]
+position = Vector2( 441, 547 )
 initial_health = 50.0
+
+[node name="part2" type="Node" parent="."]
+
+[node name="slingshot_checkpoints" type="Node" parent="part2"]
+
+[node name="slingshot_mover" parent="part2/slingshot_checkpoints" instance=ExtResource( 7 )]
+position = Vector2( 1369, 515 )
+slingshot_path = NodePath("../../../nSlingshot")
+
+[node name="collision_shape" parent="part2/slingshot_checkpoints/slingshot_mover/activation_area" index="0"]
+position = Vector2( 2, -16 )
+shape = SubResource( 2 )
+
+[node name="slingshot_mover2" parent="part2/slingshot_checkpoints" instance=ExtResource( 7 )]
+position = Vector2( 2388, 60 )
+slingshot_path = NodePath("../../../nSlingshot")
+
+[node name="collision_shape" parent="part2/slingshot_checkpoints/slingshot_mover2/activation_area" index="0"]
+shape = SubResource( 3 )
+
+[node name="slingshot_mover3" parent="part2/slingshot_checkpoints" instance=ExtResource( 7 )]
+position = Vector2( 1818, -429 )
+slingshot_path = NodePath("../../../nSlingshot")
+
+[node name="collision_shape" parent="part2/slingshot_checkpoints/slingshot_mover3/activation_area" index="0"]
+shape = SubResource( 3 )
+
+[node name="camera_checkpoint" parent="part2" instance=ExtResource( 6 )]
+position = Vector2( 1428, 214 )
+camera_path = NodePath("../../Camera")
+new_zoom = Vector2( 5, 5 )
+
+[node name="camera_destination" parent="part2/camera_checkpoint" index="0"]
+position = Vector2( 974, -136 )
+
+[node name="collision_shape" parent="part2/camera_checkpoint/activation_area" index="0"]
+position = Vector2( 230.5, 140.5 )
+shape = SubResource( 1 )
+
+[node name="Ground" parent="part2" instance=ExtResource( 3 )]
+
+[node name="polygon" parent="part2/Ground" index="0"]
+position = Vector2( 1742, -699 )
+polygon = PoolVector2Array( 1158, -1, 1358, -1, 1358, -501, -142, -501, -142, 899, 158, 899, 158, -301, 1158, -301 )
+
+[node name="collision" parent="part2/Ground" index="1"]
+position = Vector2( 1742, -699 )
+polygon = PoolVector2Array( 1158, -1, 1358, -1, 1358, -501, -142, -501, -142, 899, 158, 899, 158, -301, 1158, -301 )
+
+[node name="Ground2" parent="part2" instance=ExtResource( 3 )]
+position = Vector2( 2500, -100 )
+
+[node name="polygon" parent="part2/Ground2" index="0"]
+polygon = PoolVector2Array( -600, 1100, 400, 1100, 400, -400, 600, -400, 600, 1400, -600, 1400 )
+
+[node name="collision" parent="part2/Ground2" index="1"]
+polygon = PoolVector2Array( -600, 1100, 400, 1100, 400, -400, 600, -400, 600, 1400, -600, 1400 )
+
+[node name="wooden_platform2" parent="part2" instance=ExtResource( 5 )]
+position = Vector2( 2107, -402 )
+
+[node name="wooden_platform3" parent="part2" instance=ExtResource( 5 )]
+position = Vector2( 2696, 87 )
+
+[node name="Wood-platform" parent="part2/wooden_platform3" index="0"]
+scale = Vector2( -0.2, 0.2 )
+
+[node name="wooden_platform" parent="part2" instance=ExtResource( 5 )]
+position = Vector2( 2106, 528 )
+
+[node name="part3" type="Node" parent="."]
+
+[node name="material" parent="part3" instance=ExtResource( 8 )]
+position = Vector2( 3300, 0 )
+
+[node name="Ground" parent="part3" instance=ExtResource( 3 )]
+position = Vector2( 3500, -800 )
+
+[node name="polygon" parent="part3/Ground" index="0"]
+position = Vector2( 1, -1 )
+polygon = PoolVector2Array( -401, 301, 399, 301, 399, 501, -401, 501, -401, 1001, 599, 1001, 599, 301, 1199, 301, 1199, 1401, -401, 1401 )
+
+[node name="collision" parent="part3/Ground" index="1"]
+position = Vector2( 1, -1 )
+polygon = PoolVector2Array( -501, 301, 399, 301, 399, 501, -401, 501, -401, 1001, 599, 1001, 599, 301, 1199, 301, 1199, 1401, -501, 1401 )
+
+[node name="Ground2" parent="part3" instance=ExtResource( 3 )]
+position = Vector2( 3500, -800 )
+
+[node name="polygon" parent="part3/Ground2" index="0"]
+position = Vector2( 1, -1 )
+polygon = PoolVector2Array( -401, -399, 1199, -399, 1199, 101, 999, 101, 999, -199, -401, -199 )
+
+[node name="collision" parent="part3/Ground2" index="1"]
+position = Vector2( 1, -1 )
+polygon = PoolVector2Array( -401, -399, 1199, -399, 1199, 101, 999, 101, 999, -199, -401, -199 )
+
+[node name="slingshot_checkpoints" type="Node" parent="part3"]
+
+[node name="slingshot_mover" parent="part3/slingshot_checkpoints" instance=ExtResource( 7 )]
+position = Vector2( 3055, -485 )
+slingshot_path = NodePath("../../../nSlingshot")
+
+[node name="collision_shape" parent="part3/slingshot_checkpoints/slingshot_mover/activation_area" index="0"]
+position = Vector2( 2, -16 )
+shape = SubResource( 4 )
+
+[node name="slingshot_mover2" parent="part3/slingshot_checkpoints" instance=ExtResource( 7 )]
+position = Vector2( 3603, 215 )
+slingshot_path = NodePath("../../../nSlingshot")
+
+[node name="collision_shape" parent="part3/slingshot_checkpoints/slingshot_mover2/activation_area" index="0"]
+position = Vector2( 2, -16 )
+shape = SubResource( 2 )
+
+[node name="camera_checkpoint" parent="part3" instance=ExtResource( 6 )]
+position = Vector2( 3058, -776 )
+camera_path = NodePath("../../Camera")
+new_zoom = Vector2( 4, 4 )
+
+[node name="camera_destination" parent="part3/camera_checkpoint" index="0"]
+position = Vector2( 766, 340 )
+
+[node name="collision_shape" parent="part3/camera_checkpoint/activation_area" index="0"]
+position = Vector2( 230.5, 140.5 )
+shape = SubResource( 1 )
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+position = Vector2( 716, 540 )
+anchor_mode = 1
+zoom = Vector2( 3, 3 )
+
+[editable path="part1/Ground"]
+[editable path="part2/slingshot_checkpoints/slingshot_mover"]
+[editable path="part2/slingshot_checkpoints/slingshot_mover2"]
+[editable path="part2/slingshot_checkpoints/slingshot_mover3"]
+[editable path="part2/camera_checkpoint"]
+[editable path="part2/Ground"]
+[editable path="part2/Ground2"]
+[editable path="part2/wooden_platform3"]
+[editable path="part3/Ground"]
+[editable path="part3/Ground2"]
+[editable path="part3/slingshot_checkpoints/slingshot_mover"]
+[editable path="part3/slingshot_checkpoints/slingshot_mover2"]
+[editable path="part3/camera_checkpoint"]
