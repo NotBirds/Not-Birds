@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-export(float) var health = 1.0 #0.001 andaba
-export(float) var death_treshold = 0.001
+export(float) var initial_health = 800.0
+var health = initial_health
 export(float) var base_collision_pitch = 1.0
 export(float) var base_destroy_pitch = 1.0
 
@@ -13,7 +13,7 @@ func _on_plank_body_entered(body):
 				$audioCollision.pitch_scale = base_collision_pitch + randf()
 				$audioCollision.play()
 			if impact_velocity > 80:
-				damage(impact_velocity * body.mass * death_treshold)
+				damage(impact_velocity * pow(2, body.mass))
 
 func _ready():
 	$audioCollision.pitch_scale = base_collision_pitch
@@ -21,8 +21,8 @@ func _ready():
 
 func damage(value):
 	health -= value
-	$Sprite.modulate.g = health
-	$Sprite.modulate.b = health
+	$Sprite.modulate.g = health/initial_health
+	$Sprite.modulate.b = health/initial_health
 	if health <= 0:
 		die()
 

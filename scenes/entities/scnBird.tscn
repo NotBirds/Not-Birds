@@ -19,23 +19,18 @@ radius = 105.019
 
 [node name="rbBird" type="RigidBody2D"]
 script = ExtResource( 4 )
+death_velocity = 5.0
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.223
-autostart = true
-
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
