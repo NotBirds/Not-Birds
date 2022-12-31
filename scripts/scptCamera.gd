@@ -4,7 +4,7 @@ onready var target_pos: Vector2 = position
 onready var target_zoom: Vector2 = zoom
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position = lerp(position, target_pos, 0.03)
 	zoom = lerp(zoom, target_zoom, 0.03)
 

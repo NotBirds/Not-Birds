@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/levelObjects/slingshot_mover.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/entities/levelObjects/material_pickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 949, 0 )
@@ -23,6 +24,7 @@ extents = Vector2( 230.5, 140.5 )
 b = Vector2( 843, 0 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 0, 200 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ],
 "_edit_vertical_guides_": [ 3508.0 ]
@@ -176,6 +178,9 @@ shape = SubResource( 1 )
 position = Vector2( 716, 540 )
 anchor_mode = 1
 zoom = Vector2( 3, 3 )
+
+[node name="rbBird" parent="." instance=ExtResource( 9 )]
+position = Vector2( 800, 700 )
 
 [editable path="part1/Ground"]
 [editable path="part2/slingshot_checkpoints/slingshot_mover"]
