@@ -25,6 +25,9 @@ radius = 57.8705
 length = 24.0
 
 [node name="rbBird" type="RigidBody2D"]
+collision_layer = 15
+collision_mask = 15
+contact_monitor = true
 script = ExtResource( 4 )
 death_velocity = 5.0
 
@@ -32,7 +35,6 @@ death_velocity = 5.0
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
@@ -62,7 +64,6 @@ space_override = 3
 gravity_point = true
 
 [node name="grounded_shape2" type="CollisionShape2D" parent="grounded_area"]
-visible = false
 position = Vector2( -16, 0 )
 shape = SubResource( 4 )
 
@@ -70,10 +71,11 @@ shape = SubResource( 4 )
 shape = SubResource( 4 )
 
 [node name="grounded_shape3" type="CollisionShape2D" parent="grounded_area"]
-visible = false
 position = Vector2( 16, 0 )
 shape = SubResource( 4 )
 
+[connection signal="body_entered" from="." to="." method="_on_rbBird_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_rbBird_body_exited"]
 [connection signal="input_event" from="aim_area" to="." method="_on_aim_area_input_event"]
 [connection signal="body_entered" from="grounded_area" to="." method="_on_grounded_area_body_entered"]
 [connection signal="body_exited" from="grounded_area" to="." method="_on_grounded_area_body_exited"]

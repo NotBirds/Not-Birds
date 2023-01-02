@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/ui/health_progress.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/ui/health_under.png" type="Texture" id=2]
+[ext_resource path="res://scripts/health_bar.gd" type="Script" id=3]
+
+[node name="health_bar" type="TextureProgress"]
+margin_right = 23.0
+margin_bottom = 70.0
+size_flags_vertical = 3
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+fill_mode = 3
+nine_patch_stretch = true
+script = ExtResource( 3 )

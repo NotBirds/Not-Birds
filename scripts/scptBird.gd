@@ -2,20 +2,34 @@ extends RigidBody2D
 
 export(float) var death_velocity = 0.0
 export(float) var max_aim_distance = 200.0
-export(float) var speed_modifier = 10.0
+export(float) var speed_modifier = 8.0
 
 var shooting = false
 var shoot_pos: Vector2
-var is_grounded = false;
+
+var is_grounded = false
+
+var last_velocity: Vector2
+var can_take_damage = true
+export(float) var health = 100.0
+var initial_health = 100.0
+export(Vector2) var spawn_point
 
 onready var aim_pointer: Sprite = $aim_pointer
 onready var hitbox: Area2D = $aim_area
+onready var grounded_area: Area2D = $grounded_area
 onready var max_cursor_scale = aim_pointer.scale
+
+signal player_damaged(health)
 
 # length_squared() is more efficient than length(),
 # so we square death_velocity too
 func _ready():
 	death_velocity *= death_velocity
+	spawn_point = global_position
+
+func _physics_process(_delta):
+	last_velocity = linear_velocity
 
 # Prevent the character from rotating
 func _integrate_forces(state):
@@ -31,8 +45,8 @@ func set_shooting(var value: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT && !event.pressed && is_grounded:
+	if event is InputEventMouseButton && shooting && is_grounded:
+		if event.button_index == BUTTON_LEFT && !event.pressed:
 			throw_not_bird()
 			set_shooting(false)
 	elif event is InputEventMouseMotion && shooting:
@@ -54,7 +68,27 @@ func _on_aim_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: in
 
 
 func _on_grounded_area_body_entered(_body):
-	is_grounded = true
+	is_grounded = grounded_area.get_overlapping_bodies().size() > 0
 
 func _on_grounded_area_body_exited(_body):
-	is_grounded = false
+	is_grounded = grounded_area.get_overlapping_bodies().size() > 0
+
+
+func _on_rbBird_body_entered(body: Node):
+	if can_take_damage:
+		var impact_force = (linear_velocity - last_velocity).length()
+		set_health(health - impact_force / 400)
+		can_take_damage = false
+
+func _on_rbBird_body_exited(body):
+	can_take_damage = true
+
+func set_health(value: float):
+	health = value
+	emit_signal("player_damaged", health)
+	if health <= 0:
+		respawn()
+
+func respawn():
+	set_health(initial_health)
+	global_transform.origin = spawn_point
