@@ -15,7 +15,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 105.019
+radius = 21.3776
 
 [node name="rbBird" type="RigidBody2D"]
 script = ExtResource( 4 )
@@ -25,11 +25,9 @@ death_velocity = 5.0
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 1 )
 
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]

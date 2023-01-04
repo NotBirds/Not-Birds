@@ -29,7 +29,6 @@ __meta__ = {
 }
 
 [node name="nSlingshot" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 554, 930 )
 
 [node name="part1" type="Node" parent="."]

@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1973, 17.5 )
 
-[node name="nLevel" type="Node2D"]
+[node name="nLevel2" type="Node2D"]
 
 [node name="parallax_background" parent="." instance=ExtResource( 3 )]
 

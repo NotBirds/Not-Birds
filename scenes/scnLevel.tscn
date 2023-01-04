@@ -1,67 +1,58 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 518, 10 )
+extents = Vector2( 931, 10 )
 
 [node name="nLevel" type="Node2D"]
 
 [node name="nSlingshot" parent="." instance=ExtResource( 1 )]
-position = Vector2( -205, -78 )
+position = Vector2( -931, 393 )
 speed_modifier = 15.0
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 64, -296 )
+position = Vector2( -140, -103 )
 current = true
+zoom = Vector2( 4, 3 )
 
 [node name="sbTemp_floor" type="StaticBody2D" parent="."]
-position = Vector2( -450, -7 )
+position = Vector2( -338, 464 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sbTemp_floor"]
-position = Vector2( 508, 0 )
+position = Vector2( 95, 0 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="sbTemp_floor/CollisionShape2D"]
 position = Vector2( -7.62939e-06, 4 )
 rotation = 1.56098
-scale = Vector2( 0.5, 2.11 )
+scale = Vector2( 0.5, 3.68604 )
 texture = ExtResource( 7 )
 
 [node name="Planks" type="Node" parent="."]
 
-[node name="plank8" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 131, -520 )
+[node name="plank" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 100, 304 )
+
+[node name="plank3" parent="Planks" instance=ExtResource( 3 )]
+position = Vector2( -9, 436 )
+initial_health = 8000.0
+
+[node name="plank4" parent="Planks" instance=ExtResource( 3 )]
+position = Vector2( 117, 436 )
+initial_health = 8000.0
+
+[node name="plank6" parent="Planks" instance=ExtResource( 3 )]
+position = Vector2( 53, 234 )
+initial_health = 8000.0
+
+[node name="plank5" parent="Planks" instance=ExtResource( 3 )]
+position = Vector2( 54, 370 )
+rotation = 3.14159
+initial_health = 8000.0
 
 [node name="plank2" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 134, -166 )
-rotation = 1.56169
-
-[node name="plank" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 79, -89 )
-
-[node name="plank3" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 191, -90 )
-
-[node name="plank4" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 255, -83 )
-rotation = -0.712141
-
-[node name="plank5" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 19, -78 )
-rotation = 0.632535
-
-[node name="Sprite" parent="Planks/plank5" index="0"]
-self_modulate = Color( 0.565954, 0.826668, 0.899902, 1 )
-
-[node name="plank7" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 98, -239 )
-rotation = 0.410469
-
-[node name="plank6" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 171, -240 )
-rotation = -0.386016
-
-[editable path="Planks/plank5"]
+position = Vector2( 7, 304 )
