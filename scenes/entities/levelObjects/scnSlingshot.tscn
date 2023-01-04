@@ -54,7 +54,7 @@ shape = SubResource( 1 )
 position = Vector2( -580, 271 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="aimSound" type="AudioStreamPlayer2D" parent="."]
