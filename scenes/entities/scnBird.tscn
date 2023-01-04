@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/sprites/front/1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/front/3.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/front/2.png" type="Texture" id=3]
 [ext_resource path="res://scripts/scptBird.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/dead.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/sprites/cursor.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -17,7 +18,16 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.3776
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 57.8705
+
+[sub_resource type="RayShape2D" id=4]
+length = 24.0
+
 [node name="rbBird" type="RigidBody2D"]
+collision_layer = 15
+collision_mask = 15
+contact_monitor = true
 script = ExtResource( 4 )
 death_velocity = 5.0
 
@@ -25,7 +35,6 @@ death_velocity = 5.0
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
@@ -33,3 +42,39 @@ shape = SubResource( 1 )
 
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+
+[node name="aim_area" type="Area2D" parent="."]
+
+[node name="collision_shape" type="CollisionShape2D" parent="aim_area"]
+shape = SubResource( 3 )
+
+[node name="aim_pointer" type="Sprite" parent="."]
+visible = false
+position = Vector2( 96, 0 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 4096
+z_as_relative = false
+texture = ExtResource( 6 )
+
+[node name="grounded_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+space_override = 3
+gravity_point = true
+
+[node name="grounded_shape2" type="CollisionShape2D" parent="grounded_area"]
+position = Vector2( -16, 0 )
+shape = SubResource( 4 )
+
+[node name="grounded_shape" type="CollisionShape2D" parent="grounded_area"]
+shape = SubResource( 4 )
+
+[node name="grounded_shape3" type="CollisionShape2D" parent="grounded_area"]
+position = Vector2( 16, 0 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_rbBird_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_rbBird_body_exited"]
+[connection signal="input_event" from="aim_area" to="." method="_on_aim_area_input_event"]
+[connection signal="body_entered" from="grounded_area" to="." method="_on_grounded_area_body_entered"]
+[connection signal="body_exited" from="grounded_area" to="." method="_on_grounded_area_body_exited"]

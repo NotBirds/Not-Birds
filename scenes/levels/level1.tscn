@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/levelObjects/slingshot_mover.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/entities/levelObjects/material_pickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 550, 440.5 )
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 949, 0 )
@@ -23,6 +28,7 @@ extents = Vector2( 230.5, 140.5 )
 b = Vector2( 843, 0 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 0, 200 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ],
 "_edit_vertical_guides_": [ 3508.0 ]
@@ -44,6 +50,21 @@ polygon = PoolVector2Array( 300, 100, 300, 1000, 1300, 1000, 1300, 500, 1900, 50
 [node name="plank" parent="part1" instance=ExtResource( 4 )]
 position = Vector2( 441, 547 )
 initial_health = 50.0
+
+[node name="camera_checkpoint" parent="part1" instance=ExtResource( 6 )]
+position = Vector2( 600, 700 )
+camera_path = NodePath("../../Camera")
+new_zoom = Vector2( 3, 3 )
+
+[node name="camera_destination" parent="part1/camera_checkpoint" index="0"]
+position = Vector2( 200, -300 )
+
+[node name="activation_area" parent="part1/camera_checkpoint" index="1"]
+visible = false
+
+[node name="collision_shape" parent="part1/camera_checkpoint/activation_area" index="0"]
+position = Vector2( 250, -159.5 )
+shape = SubResource( 5 )
 
 [node name="part2" type="Node" parent="."]
 
@@ -173,10 +194,18 @@ shape = SubResource( 1 )
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
 position = Vector2( 716, 540 )
-anchor_mode = 1
 zoom = Vector2( 3, 3 )
 
+[node name="rbBird" parent="." instance=ExtResource( 9 )]
+position = Vector2( 800, 700 )
+contacts_reported = 1
+
+[node name="UI" parent="." instance=ExtResource( 10 )]
+
+[connection signal="player_damaged" from="rbBird" to="UI/health_bar" method="_on_rbBird_player_damaged"]
+
 [editable path="part1/Ground"]
+[editable path="part1/camera_checkpoint"]
 [editable path="part2/slingshot_checkpoints/slingshot_mover"]
 [editable path="part2/slingshot_checkpoints/slingshot_mover2"]
 [editable path="part2/slingshot_checkpoints/slingshot_mover3"]
@@ -189,3 +218,4 @@ zoom = Vector2( 3, 3 )
 [editable path="part3/slingshot_checkpoints/slingshot_mover"]
 [editable path="part3/slingshot_checkpoints/slingshot_mover2"]
 [editable path="part3/camera_checkpoint"]
+[editable path="UI"]
