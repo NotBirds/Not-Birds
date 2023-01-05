@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/levelObjects/circle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -17,7 +18,7 @@ speed_modifier = 15.0
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -140, -103 )
 current = true
-zoom = Vector2( 4, 3 )
+zoom = Vector2( 4, 4 )
 
 [node name="sbTemp_floor" type="StaticBody2D" parent="."]
 position = Vector2( -338, 464 )
@@ -35,24 +36,30 @@ texture = ExtResource( 7 )
 [node name="Planks" type="Node" parent="."]
 
 [node name="plank" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 100, 304 )
+position = Vector2( 131, 251 )
 
 [node name="plank3" parent="Planks" instance=ExtResource( 3 )]
-position = Vector2( -9, 436 )
+position = Vector2( -16, 399 )
 initial_health = 8000.0
 
 [node name="plank4" parent="Planks" instance=ExtResource( 3 )]
-position = Vector2( 117, 436 )
+position = Vector2( 176, 399 )
 initial_health = 8000.0
 
+[node name="circle" parent="Planks" instance=ExtResource( 4 )]
+position = Vector2( -69, 313 )
+
+[node name="circle2" parent="Planks" instance=ExtResource( 4 )]
+position = Vector2( -189, 398 )
+
 [node name="plank6" parent="Planks" instance=ExtResource( 3 )]
-position = Vector2( 53, 234 )
+position = Vector2( 78, 113 )
 initial_health = 8000.0
 
 [node name="plank5" parent="Planks" instance=ExtResource( 3 )]
-position = Vector2( 54, 370 )
+position = Vector2( 80, 391 )
 rotation = 3.14159
 initial_health = 8000.0
 
 [node name="plank2" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 7, 304 )
+position = Vector2( 27, 251 )

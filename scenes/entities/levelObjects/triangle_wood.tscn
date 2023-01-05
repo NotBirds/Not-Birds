@@ -11,4 +11,4 @@ texture = ExtResource( 2 )
 
 [node name="physicsCollider" parent="." index="1"]
 position = Vector2( 0.5, 0 )
-polygon = PoolVector2Array( -0.5, -48, 91.5, 48, -92.5, 48 )
+polygon = PoolVector2Array( -0.5, -56, 95.5, 48, -96.5, 48 )
