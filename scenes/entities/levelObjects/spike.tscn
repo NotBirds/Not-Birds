@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/spikes.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 45.5, 39.5 )
+
+[node name="spike" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 7
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2( 49.5, -39.5 )
+shape = SubResource( 4 )
+
+[node name="Spikes" type="Sprite" parent="."]
+position = Vector2( 0, -100 )
+texture = ExtResource( 1 )
+centered = false

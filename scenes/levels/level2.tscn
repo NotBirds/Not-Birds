@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/entities/levelObjects/scnGround.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/levelObjects/checkpoint-2x1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/levelObjects/checkpoint-6x1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/levelObjects/spike.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 600, 350 )
@@ -17,49 +22,15 @@ extents = Vector2( 900, 350 )
 
 [node name="Node2D" type="Node2D"]
 
+[node name="UI" parent="." instance=ExtResource( 8 )]
+
 [node name="Camera" parent="." instance=ExtResource( 4 )]
+rotating = true
 zoom = Vector2( 4, 4 )
 
-[node name="camera_checkpoint" parent="." instance=ExtResource( 3 )]
-visible = false
-new_zoom = Vector2( 4, 4 )
-
-[node name="collision_shape" parent="camera_checkpoint/activation_area" index="0"]
-position = Vector2( 0, -50 )
-shape = SubResource( 1 )
-
-[node name="camera_checkpoint2" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 1300, 0 )
-new_zoom = Vector2( 4, 4 )
-
-[node name="collision_shape" parent="camera_checkpoint2/activation_area" index="0"]
-position = Vector2( 200, 50 )
-shape = SubResource( 2 )
-
-[node name="camera_checkpoint3" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 1800, 1000 )
-new_zoom = Vector2( 4, 4 )
-
-[node name="camera_destination" parent="camera_checkpoint3" index="0"]
-position = Vector2( -300, 0 )
-
-[node name="collision_shape" parent="camera_checkpoint3/activation_area" index="0"]
-position = Vector2( -300, -50 )
-shape = SubResource( 3 )
-
-[node name="camera_checkpoint4" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 0, 1000 )
-new_zoom = Vector2( 4, 4 )
-
-[node name="collision_shape" parent="camera_checkpoint4/activation_area" index="0"]
-position = Vector2( 0, -50 )
-shape = SubResource( 1 )
-
 [node name="rbBird" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 200 )
+position = Vector2( 0, 274 )
+mode = 3
 
 [node name="ground_top" parent="." instance=ExtResource( 1 )]
 
@@ -85,17 +56,106 @@ __meta__ = {
 position = Vector2( 0, 1300 )
 polygon = PoolVector2Array( 2400, -700, 2400, 0, 1700, 0, 1700, 1000, 1400, 1000, 1400, 0, 1200, 0, 1200, 1000, 900, 1000, 900, 0, -600, 0, -600, -700, -1300, -700, -1300, 1400, 3200, 1400, 3200, -700 )
 
-[node name="plank2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 500, 200 )
+[node name="camera_checkpoint" parent="." instance=ExtResource( 3 )]
+visible = false
+camera_path = NodePath("../Camera")
+new_zoom = Vector2( 4, 4 )
 
-[connection signal="move_camera" from="camera_checkpoint" to="Camera" method="_on_checkpoint_player_advanced"]
-[connection signal="move_camera" from="camera_checkpoint2" to="Camera" method="_on_checkpoint_player_advanced"]
-[connection signal="move_camera" from="camera_checkpoint3" to="Camera" method="_on_checkpoint_player_advanced"]
-[connection signal="move_camera" from="camera_checkpoint4" to="Camera" method="_on_checkpoint_player_advanced"]
+[node name="collision_shape" parent="camera_checkpoint/activation_area" index="0"]
+position = Vector2( 0, -50 )
+shape = SubResource( 1 )
 
+[node name="camera_checkpoint2" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1300, 0 )
+camera_path = NodePath("../Camera")
+new_zoom = Vector2( 4, 4 )
+
+[node name="collision_shape" parent="camera_checkpoint2/activation_area" index="0"]
+position = Vector2( 200, 50 )
+shape = SubResource( 2 )
+
+[node name="camera_checkpoint3" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1800, 1000 )
+camera_path = NodePath("../Camera")
+new_zoom = Vector2( 4, 4 )
+
+[node name="camera_destination" parent="camera_checkpoint3" index="0"]
+position = Vector2( -300, 0 )
+
+[node name="collision_shape" parent="camera_checkpoint3/activation_area" index="0"]
+position = Vector2( -300, -50 )
+shape = SubResource( 3 )
+
+[node name="camera_checkpoint4" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, 1000 )
+camera_path = NodePath("../Camera")
+new_zoom = Vector2( 4, 4 )
+
+[node name="collision_shape" parent="camera_checkpoint4/activation_area" index="0"]
+position = Vector2( 0, -50 )
+shape = SubResource( 1 )
+
+[node name="player_checkpoint" parent="." instance=ExtResource( 6 )]
+
+[node name="player_checkpoint2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1300, -200 )
+rotation = 3.14159
+
+[node name="player_checkpoint3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2000, 1300 )
+
+[node name="spike" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1500, 100 )
+collision_mask = 15
+
+[node name="spike2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1600, 100 )
+
+[node name="spike3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1600, -200 )
+rotation = 3.14159
+
+[node name="spike4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1700, -200 )
+rotation = 3.14159
+
+[node name="planks" type="Node2D" parent="."]
+
+[node name="plank2" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1219, 1203 )
+
+[node name="plank6" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1238, 976 )
+
+[node name="plank7" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1354, 974 )
+
+[node name="plank3" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1381, 1204 )
+
+[node name="plank9" parent="planks" instance=ExtResource( 11 )]
+position = Vector2( 1293, 787 )
+base_collision_pitch = 0.5
+
+[node name="plank4" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1209, 1088 )
+rotation = 1.57079
+
+[node name="plank8" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1292, 860 )
+rotation = 1.57079
+
+[node name="plank5" parent="planks" instance=ExtResource( 5 )]
+position = Vector2( 1391, 1088 )
+rotation = 1.57079
+
+[editable path="UI"]
+[editable path="ground_top"]
+[editable path="ground_bottom"]
 [editable path="camera_checkpoint"]
 [editable path="camera_checkpoint2"]
 [editable path="camera_checkpoint3"]
 [editable path="camera_checkpoint4"]
-[editable path="ground_top"]
-[editable path="ground_bottom"]
