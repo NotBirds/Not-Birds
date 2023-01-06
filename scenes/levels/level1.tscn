@@ -35,6 +35,7 @@ polygon = PoolVector2Array( 300, 100, 300, 1000, 1300, 1000, 1300, 500, 1900, 50
 [node name="plank" parent="part1" instance=ExtResource( 4 )]
 position = Vector2( 441, 547 )
 initial_health = 50.0
+base_collision_pitch = 0.5
 
 [node name="camera_checkpoint" parent="part1" instance=ExtResource( 6 )]
 position = Vector2( 600, 700 )
@@ -141,11 +142,8 @@ zoom = Vector2( 3, 3 )
 
 [node name="rbBird" parent="." instance=ExtResource( 9 )]
 position = Vector2( 800, 700 )
-contacts_reported = 1
 
 [node name="UI" parent="." instance=ExtResource( 10 )]
-
-[connection signal="player_damaged" from="rbBird" to="UI/health_bar" method="_on_rbBird_player_damaged"]
 
 [editable path="part1/Ground"]
 [editable path="part1/camera_checkpoint"]
