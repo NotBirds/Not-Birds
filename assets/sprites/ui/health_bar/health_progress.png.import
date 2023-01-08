@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1.png-f05dd96cb817f03a6d5441db2885da6c.stex"
+path="res://.import/health_progress.png-c163ac774f664a02ac5fd93b74557a25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/idle/1.png"
-dest_files=[ "res://.import/1.png-f05dd96cb817f03a6d5441db2885da6c.stex" ]
+source_file="res://assets/sprites/ui/health_bar/health_progress.png"
+dest_files=[ "res://.import/health_progress.png-c163ac774f664a02ac5fd93b74557a25.stex" ]
 
 [params]
 
