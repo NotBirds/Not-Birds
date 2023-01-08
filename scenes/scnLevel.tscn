@@ -1,19 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/entities/levelObjects/scnSlingshot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/levelObjects/circle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/levelObjects/EnemyShooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/wood.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 931, 10 )
 
 [node name="nLevel" type="Node2D"]
-
-[node name="nSlingshot" parent="." instance=ExtResource( 1 )]
-position = Vector2( -931, 393 )
-speed_modifier = 15.0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -140, -103 )
@@ -22,6 +19,8 @@ zoom = Vector2( 4, 4 )
 
 [node name="sbTemp_floor" type="StaticBody2D" parent="."]
 position = Vector2( -338, 464 )
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sbTemp_floor"]
 position = Vector2( 95, 0 )
@@ -35,9 +34,6 @@ texture = ExtResource( 7 )
 
 [node name="Planks" type="Node" parent="."]
 
-[node name="plank" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 131, 251 )
-
 [node name="plank3" parent="Planks" instance=ExtResource( 3 )]
 position = Vector2( -16, 399 )
 initial_health = 8000.0
@@ -47,19 +43,27 @@ position = Vector2( 176, 399 )
 initial_health = 8000.0
 
 [node name="circle" parent="Planks" instance=ExtResource( 4 )]
-position = Vector2( -69, 313 )
+position = Vector2( 180, 8 )
 
 [node name="circle2" parent="Planks" instance=ExtResource( 4 )]
-position = Vector2( -189, 398 )
-
-[node name="plank6" parent="Planks" instance=ExtResource( 3 )]
-position = Vector2( 78, 113 )
-initial_health = 8000.0
+position = Vector2( 485, 380 )
 
 [node name="plank5" parent="Planks" instance=ExtResource( 3 )]
 position = Vector2( 80, 391 )
 rotation = 3.14159
 initial_health = 8000.0
 
-[node name="plank2" parent="Planks" instance=ExtResource( 2 )]
-position = Vector2( 27, 251 )
+[node name="plank6" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 79, 297 )
+rotation = -1.5708
+
+[node name="plank7" parent="Planks" instance=ExtResource( 2 )]
+position = Vector2( 281, -26 )
+rotation = -1.5708
+
+[node name="enemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -205, 393 )
+rotation = 3.14159
+
+[node name="rbBird" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1073, 427 )
