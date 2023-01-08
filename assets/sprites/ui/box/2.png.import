@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2.png-334545c73a4acde905b025f00e71db1c.stex"
+path="res://.import/2.png-bdb1b4644c3e461cc231b446966970df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/idle/2.png"
-dest_files=[ "res://.import/2.png-334545c73a4acde905b025f00e71db1c.stex" ]
+source_file="res://assets/sprites/ui/box/2.png"
+dest_files=[ "res://.import/2.png-bdb1b4644c3e461cc231b446966970df.stex" ]
 
 [params]
 

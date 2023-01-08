@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sling.png-d741954ad0daa7210b1a7d3768e26b75.stex"
+path="res://.import/3.png-c6fa4b7d7b420c72dc428f9c0a002103.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sling.png"
-dest_files=[ "res://.import/sling.png-d741954ad0daa7210b1a7d3768e26b75.stex" ]
+source_file="res://assets/sprites/player/idle/3.png"
+dest_files=[ "res://.import/3.png-c6fa4b7d7b420c72dc428f9c0a002103.stex" ]
 
 [params]
 

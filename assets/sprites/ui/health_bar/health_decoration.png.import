@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glass.png-05ecf1f8c14e5ce0cf86496d7874a59a.stex"
+path="res://.import/health_decoration.png-a84d8a3157edffdbeba36eb83930c97c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/glass.png"
-dest_files=[ "res://.import/glass.png-05ecf1f8c14e5ce0cf86496d7874a59a.stex" ]
+source_file="res://assets/sprites/ui/health_bar/health_decoration.png"
+dest_files=[ "res://.import/health_decoration.png-a84d8a3157edffdbeba36eb83930c97c.stex" ]
 
 [params]
 

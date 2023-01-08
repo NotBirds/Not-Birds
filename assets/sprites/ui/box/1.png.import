@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/square_wood3.png-5357a424aaca7a58ac9f69ead9337dad.stex"
+path="res://.import/1.png-e58fec6301ab797ca734be7d80cd89a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/square_wood3.png"
-dest_files=[ "res://.import/square_wood3.png-5357a424aaca7a58ac9f69ead9337dad.stex" ]
+source_file="res://assets/sprites/ui/box/1.png"
+dest_files=[ "res://.import/1.png-e58fec6301ab797ca734be7d80cd89a6.stex" ]
 
 [params]
 
