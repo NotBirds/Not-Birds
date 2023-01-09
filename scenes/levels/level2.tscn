@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://scenes/entities/levelObjects/scnGround.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/levelObjects/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=4]
@@ -8,8 +8,11 @@
 [ext_resource path="res://scenes/entities/levelObjects/checkpoint-2x1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/levelObjects/checkpoint-6x1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/checkpoint.gd" type="Script" id=9]
 [ext_resource path="res://scenes/entities/levelObjects/spike.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 600, 350 )
@@ -20,6 +23,12 @@ extents = Vector2( 900, 450 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 900, 350 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 350, 100 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 50, 350 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource( 8 )]
@@ -28,20 +37,29 @@ extents = Vector2( 900, 350 )
 rotating = true
 zoom = Vector2( 4, 4 )
 
+[node name="enemy" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1167, 1025 )
+
+[node name="enemy2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1426, 1025 )
+
+[node name="enemy3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1296, 1252 )
+
 [node name="rbBird" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 274 )
+position = Vector2( 201, 256 )
 mode = 3
 
 [node name="ground_top" parent="." instance=ExtResource( 1 )]
 
 [node name="polygon" parent="ground_top" index="0"]
-polygon = PoolVector2Array( -600, 300, 1500, 300, 1500, 100, 1700, 100, 1700, 600, -1300, 600, -1300, -1200, 936.319, -1200, 3200, -1200, 3200, 600, 2400, 600, 2400, -400, 1700, -400, 1700, -200, 1200, -200, 1200, -400, -600, -400 )
+polygon = PoolVector2Array( -600, 300, 1500, 300, 1500, 200, 1700, 200, 1700, 600, -1300, 600, -1300, -1200, 936.319, -1200, 3200, -1200, 3200, 600, 2400, 600, 2400, -400, 1700, -400, 1700, -200, 1200, -200, 1200, -400, -600, -400 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="collision" parent="ground_top" index="1"]
-polygon = PoolVector2Array( -600, 300, 1500, 300, 1500, 100, 1700, 100, 1700, 600, -1300, 600, -1300, -1200, 3200, -1200, 3200, 600, 2400, 600, 2400, -400, 1700, -400, 1700, -200, 1200, -200, 1200, -400, -600, -400 )
+polygon = PoolVector2Array( -600, 300, 1500, 300, 1500, 200, 1700, 200, 1700, 600, -1300, 600, -1300, -1200, 936.319, -1200, 3200, -1200, 3200, 600, 2400, 600, 2400, -400, 1700, -400, 1700, -200, 1200, -200, 1200, -400, -600, -400 )
 
 [node name="ground_bottom" parent="." instance=ExtResource( 1 )]
 
@@ -106,13 +124,14 @@ rotation = 3.14159
 
 [node name="player_checkpoint3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2000, 1300 )
+script = ExtResource( 9 )
 
 [node name="spike" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1500, 100 )
+position = Vector2( 1500, 200 )
 collision_mask = 15
 
 [node name="spike2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1600, 100 )
+position = Vector2( 1600, 200 )
 
 [node name="spike3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1600, -200 )
@@ -152,10 +171,28 @@ rotation = 1.57079
 position = Vector2( 1391, 1088 )
 rotation = 1.57079
 
-[editable path="UI"]
+[node name="fight_zone" parent="." instance=ExtResource( 13 )]
+
+[node name="fight_mode_init" parent="fight_zone" index="0"]
+position = Vector2( 1700, 400 )
+
+[node name="CollisionShape2D" parent="fight_zone/fight_mode_init" index="0"]
+position = Vector2( 350, 100 )
+shape = SubResource( 4 )
+
+[node name="bird_killer" parent="fight_zone" index="1"]
+position = Vector2( 200, 600 )
+
+[node name="CollisionShape2D" parent="fight_zone/bird_killer" index="0"]
+position = Vector2( 50, 350 )
+shape = SubResource( 5 )
+
 [editable path="ground_top"]
 [editable path="ground_bottom"]
 [editable path="camera_checkpoint"]
 [editable path="camera_checkpoint2"]
 [editable path="camera_checkpoint3"]
 [editable path="camera_checkpoint4"]
+[editable path="fight_zone"]
+[editable path="fight_zone/fight_mode_init"]
+[editable path="fight_zone/bird_killer"]

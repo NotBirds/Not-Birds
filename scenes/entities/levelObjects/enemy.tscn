@@ -10,4 +10,4 @@ scale = Vector2( 0.260606, 0.260606 )
 texture = ExtResource( 2 )
 
 [node name="physicsCollider" parent="." index="1"]
-polygon = PoolVector2Array( -48, -40, 48, -40, 48, 40, -48, 40 )
+polygon = PoolVector2Array( -14, -38, 7, -35, 41, 32, -45, 32 )
