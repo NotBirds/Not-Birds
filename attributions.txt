@@ -1,0 +1,13 @@
+fight-start.mp3:
+  Transformers Type SFX 2
+  by hykenfreak
+  (modified)
+  https://creativecommons.org/licenses/by/4.0/
+  https://freesound.org/people/hykenfreak/sounds/248182/
+
+level-win.mp3:
+  Electro win sound
+  by Unlistenable
+  (modified)
+  https://creativecommons.org/licenses/by/4.0/
+  https://freesound.org/people/Unlistenable/sounds/391539/

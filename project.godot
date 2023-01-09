@@ -17,6 +17,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 SignalManager="*res://scenes/signal_manager.tscn"
+StateManager="*res://scenes/state_manager.tscn"
 
 [debug]
 

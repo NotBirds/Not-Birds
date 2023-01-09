@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="bird_killer" type="Area2D"]
+__meta__ = {
+"_editor_description_": "The player  will die when entering this area"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
