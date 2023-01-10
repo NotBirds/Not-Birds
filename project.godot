@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "BirdKiller",
+"language": "GDScript",
+"path": "res://scenes/entities/levelObjects/bird_killer.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Destroyable",
+"language": "GDScript",
+"path": "res://scripts/destroyable.gd"
+} ]
+_global_script_class_icons={
+"BirdKiller": "",
+"Destroyable": ""
+}
+
 [application]
 
 config/name="Not Birds"

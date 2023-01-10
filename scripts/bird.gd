@@ -12,8 +12,8 @@ var is_grounded = false
 var last_velocity: Vector2
 var can_take_damage = true
 export(float) var health = 100.0
-var initial_health = 100.0
-export(Vector2) var spawn_point = Vector2.ZERO
+var initial_health
+export(Vector2) var spawn_point
 
 onready var aim_pointer: Sprite = $aim_pointer
 onready var hitbox: Area2D = $aim_area
@@ -23,13 +23,21 @@ onready var max_cursor_scale = aim_pointer.scale
 onready var signal_manager = $"/root/SignalManager"
 onready var state_manager = $"/root/StateManager"
 
-# length_squared() is more efficient than length(),
-# so we square death_velocity too
+
 func _ready():
+	# length_squared() is more efficient than length(),
+	# so we square death_velocity too
 	death_velocity *= death_velocity
-	spawn_point = global_position
+	
+	initial_health = health
+
+	# Connect signals
 	signal_manager.connect("change_spawnpoint", self, "change_spawnpoint")
 	signal_manager.connect("respawn_player", self, "_on_respawn")
+	signal_manager.connect("fight_mode", self, "_on_fight_mode")
+	
+func _enter_tree():
+	spawn_point = global_position
 
 func _physics_process(_delta):
 	last_velocity = linear_velocity
@@ -50,7 +58,7 @@ func set_shooting(var value: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
-	if event is InputEventMouseButton && shooting && (is_grounded || mode == RigidBody2D.MODE_KINEMATIC):
+	if event is InputEventMouseButton && shooting:
 		if event.button_index == BUTTON_LEFT && !event.pressed:
 			throw_not_bird()
 			set_shooting(false)
@@ -104,3 +112,6 @@ func _on_rbBird_body_entered(body):
 	if body is StaticBody2D:
 		if body.get_collision_layer_bit(4):
 			call_deferred("set_health", 0)
+
+func _on_fight_mode(fighting: bool):
+	if !fighting: set_health(initial_health)
