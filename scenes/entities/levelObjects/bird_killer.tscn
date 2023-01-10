@@ -1,8 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/entities/levelObjects/bird_killer.gd" type="Script" id=1]
 
 [node name="bird_killer" type="Area2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "The player  will die when entering this area"
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_bird_killer_body_entered"]

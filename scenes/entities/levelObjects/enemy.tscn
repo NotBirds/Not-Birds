@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/sprites/enemy.png" type="Texture" id=2]
 
 [node name="enemy" instance=ExtResource( 1 )]
+collision_layer = 4
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.260606, 0.260606 )

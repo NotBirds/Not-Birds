@@ -1,3 +1,4 @@
+class_name Destroyable
 extends RigidBody2D
 
 export(float) var initial_health = 800.0
