@@ -27,7 +27,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Not Birds"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/levels/template_proposal.tscn"
+run/low_processor_mode=true
 config/icon="res://assets/icon.png"
 
 [autoload]
