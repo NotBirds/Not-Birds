@@ -1,128 +1,155 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/levelObjects/checkpoint-2x1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Front.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
-[ext_resource path="res://scenes/entities/construction/1x4Wood.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
 
-[node name="location_identifier" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1380, 484 )
 
-[node name="Camera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 370, -70 )
-rotating = true
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 161, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 256, 160 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 224, 100 )
+
+[node name="level" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
-visible = false
 
-[node name="geography" type="Node" parent="."]
+[node name="geography" type="Node2D" parent="."]
+
+[node name="background" type="Sprite" parent="geography"]
+position = Vector2( 952.5, -731.25 )
+scale = Vector2( 3.56699, 3.559 )
+texture = ExtResource( 7 )
 
 [node name="foreground" type="Sprite" parent="geography"]
 position = Vector2( 952.5, -731.25 )
 scale = Vector2( 3.56678, 3.55903 )
 texture = ExtResource( 6 )
 
-[node name="background" type="Sprite" parent="geography/foreground"]
-show_behind_parent = true
-position = Vector2( 3.05176e-05, 0 )
-scale = Vector2( 1.00006, 0.999992 )
-texture = ExtResource( 7 )
-
-[node name="level_colition" type="StaticBody2D" parent="geography"]
+[node name="level_collision" type="StaticBody2D" parent="geography"]
+visible = false
 collision_layer = 8
 collision_mask = 8
 
-[node name="hole_stop1" type="CollisionPolygon2D" parent="geography/level_colition"]
+[node name="hole_stop1" type="CollisionPolygon2D" parent="geography/level_collision"]
+visible = false
 position = Vector2( -80, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1630, -320 )
 
-[node name="hole_stop2" type="CollisionPolygon2D" parent="geography/level_colition"]
+[node name="hole_stop2" type="CollisionPolygon2D" parent="geography/level_collision"]
+visible = false
 position = Vector2( 300, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1570, -320 )
 
-[node name="level" type="CollisionPolygon2D" parent="geography/level_colition"]
+[node name="level" type="CollisionPolygon2D" parent="geography/level_collision"]
+visible = false
 position = Vector2( 500, -1300 )
 polygon = PoolVector2Array( -600, 1400, 1800, 1400, 1800, 1090, 1300, 1100, 1300, 1000, 1800, 1000, 1800, 0, 2000, 0, 2000, 1800, -1100, 1800, -1100, -100, 900, -100, 900, -600, 1900, -600, 1900, -300, 1800, -300, 1800, -500, 1000, -490, 1000, 0, 436.908, 0, -1000, 0, -1000, 1000, 1100, 1000, 1100, 1100, -600, 1100 )
 
-[node name="entities" type="Node" parent="."]
+[node name="wooden_platform" parent="geography" instance=ExtResource( 15 )]
+position = Vector2( 1720, -1328 )
 
-[node name="rbBird" parent="entities" instance=ExtResource( 1 )]
-position = Vector2( 160, 50 )
+[node name="wooden_platform2" parent="geography" instance=ExtResource( 15 )]
+position = Vector2( 2088, -872 )
 
-[node name="flags" type="Node" parent="entities"]
+[node name="Wood-platform" parent="geography/wooden_platform2" index="0"]
+scale = Vector2( -0.2, 0.2 )
 
-[node name="camera_checkpoint4" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 160, -60 )
-scale = Vector2( 2.30984, 3.28584 )
-camera_path = NodePath("../../../Camera")
+[node name="entities" type="Node2D" parent="."]
+
+[node name="fight_zone" parent="entities" instance=ExtResource( 5 )]
+position = Vector2( 1536, -384 )
+
+[node name="fight_mode_init" parent="entities/fight_zone" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="entities/fight_zone/fight_mode_init" index="0"]
+position = Vector2( -636, -420 )
+shape = SubResource( 1 )
+
+[node name="bird_killer" parent="entities/fight_zone" index="1"]
+position = Vector2( 16, 152 )
+enabled = false
+
+[node name="CollisionShape2D" parent="entities/fight_zone/bird_killer" index="0"]
+position = Vector2( 151, 0 )
+shape = SubResource( 4 )
+
+[node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 12 )]
+position = Vector2( -200, -352 )
+
+[node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 12 )]
+position = Vector2( 232, -592 )
+
+[node name="enemy3" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
+position = Vector2( 448, -592 )
+
+[node name="enemy4" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 12 )]
+position = Vector2( 288, -352 )
+
+[node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
+position = Vector2( -112, 48 )
+
+[node name="camera_checkpoints" type="Node" parent="entities"]
+
+[node name="camera_checkpoint" parent="entities/camera_checkpoints" instance=ExtResource( 9 )]
+position = Vector2( -64, -192 )
 new_zoom = Vector2( 2, 2 )
 
-[node name="camera_checkpoint" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 1020, -60 )
-scale = Vector2( -0.999779, 3.21096 )
-camera_path = NodePath("../../../Camera")
-new_zoom = Vector2( 2, 2 )
+[node name="camera_destination" parent="entities/camera_checkpoints/camera_checkpoint" index="0"]
+position = Vector2( 224, 240 )
 
-[node name="camera_destination" parent="entities/flags/camera_checkpoint" index="0"]
-position = Vector2( -760.168, 15.5717 )
+[node name="collision_shape" parent="entities/camera_checkpoints/camera_checkpoint/activation_area" index="0"]
+position = Vector2( 256, 160 )
+shape = SubResource( 2 )
 
-[node name="camera_checkpoint2" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 1760, -380 )
-scale = Vector2( -10.6285, -1.47252 )
-camera_path = NodePath("../../../Camera")
-new_zoom = Vector2( 3, 3 )
+[node name="camera_checkpoint2" parent="entities/camera_checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 1472, -512 )
+new_zoom = Vector2( 6, 6 )
 
-[node name="camera_destination" parent="entities/flags/camera_checkpoint2" index="0"]
-position = Vector2( -13.172, 217.314 )
+[node name="camera_destination" parent="entities/camera_checkpoints/camera_checkpoint2" index="0"]
+position = Vector2( -520, -192 )
 
-[node name="camera_checkpoint3" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 1080, -760 )
-scale = Vector2( 1.07758, -8.81495 )
-camera_path = NodePath("../../../Camera")
-new_zoom = Vector2( 4, 4 )
+[node name="collision_shape" parent="entities/camera_checkpoints/camera_checkpoint2/activation_area" index="0"]
+position = Vector2( 224, 100 )
+shape = SubResource( 3 )
 
-[node name="camera_destination" parent="entities/flags/camera_checkpoint3" index="0"]
-position = Vector2( -844.488, -7.62939e-06 )
+[node name="player_checkpoints" type="Node" parent="entities"]
 
-[node name="collision_shape" parent="entities/flags/camera_checkpoint3/activation_area" index="0"]
-position = Vector2( 0, 4.53773 )
-scale = Vector2( 1, 1.19059 )
-
-[node name="camera_checkpoint5" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 1880, -1480 )
-scale = Vector2( 8.2, 1 )
-
-[node name="camera_destination" parent="entities/flags/camera_checkpoint5" index="0"]
-position = Vector2( 9.75609, -20 )
-
-[node name="collision_shape" parent="entities/flags/camera_checkpoint5/activation_area" index="0"]
-position = Vector2( 3.65852, 170 )
-
-[node name="camera_checkpoint6" parent="entities/flags" instance=ExtResource( 5 )]
-position = Vector2( 1700, 50 )
-scale = Vector2( 3.74508, 1 )
-new_zoom = Vector2( 2, 2 )
-
-[node name="checkpoints" type="Node" parent="entities"]
-
-[node name="player_checkpoint2" parent="entities/checkpoints" instance=ExtResource( 4 )]
+[node name="player_checkpoint2" parent="entities/player_checkpoints" instance=ExtResource( 4 )]
 position = Vector2( 1370, -300 )
 scale = Vector2( 1.72, 1 )
 
-[node name="player_checkpoint" parent="entities/checkpoints" instance=ExtResource( 4 )]
+[node name="player_checkpoint" parent="entities/player_checkpoints" instance=ExtResource( 4 )]
 position = Vector2( 160, 90 )
 
 [node name="construction" type="Node" parent="entities"]
 
-[node name="4x4" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 1710, -180 )
-rotation = -1.5724
+[node name="rbBird" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 50 )
+mass = 3.0
+speed_modifier = 24.0
 
-[editable path="entities/flags/camera_checkpoint4"]
-[editable path="entities/flags/camera_checkpoint"]
-[editable path="entities/flags/camera_checkpoint2"]
-[editable path="entities/flags/camera_checkpoint3"]
-[editable path="entities/flags/camera_checkpoint5"]
+[node name="camera" parent="rbBird" instance=ExtResource( 2 )]
+rotating = true
+player_path = NodePath("..")
+
+[editable path="geography/wooden_platform2"]
+[editable path="entities/fight_zone"]
+[editable path="entities/fight_zone/fight_mode_init"]
+[editable path="entities/fight_zone/bird_killer"]
+[editable path="entities/camera_checkpoints/camera_checkpoint"]
+[editable path="entities/camera_checkpoints/camera_checkpoint2"]

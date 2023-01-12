@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/entities/levelObjects/bird_killer.gd" type="Script" id=1]
+[ext_resource path="res://scripts/bird_killer.gd" type="Script" id=1]
 
 [node name="bird_killer" type="Area2D"]
 collision_layer = 0

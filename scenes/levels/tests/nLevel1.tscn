@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/entities/backgrounds/bg1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/rando.png" type="Texture" id=4]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/inheritables/destroyable.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/Ambience - Copy.mp3" type="AudioStream" id=9]
 [ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=10]
 

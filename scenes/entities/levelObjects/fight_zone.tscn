@@ -25,5 +25,7 @@ stream = ExtResource( 4 )
 
 [node name="enemies" type="Node" parent="."]
 
+[node name="new_spawnpoint" type="Position2D" parent="."]
+
 [connection signal="body_entered" from="fight_mode_init" to="." method="_on_fight_mode_init_body_entered"]
 [connection signal="child_exiting_tree" from="enemies" to="." method="_on_enemies_child_exiting_tree"]

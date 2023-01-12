@@ -11,4 +11,3 @@ func _set_fight_mode(fighting: bool):
 		self.queue("fighting")
 	else:
 		play("fight_disable")
-		self.queue("REST")
