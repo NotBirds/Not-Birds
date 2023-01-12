@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/entities/levelObjects/plank.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/entities/levelObjects/triangle_wood.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/entities/levelObjects/circle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/inheritables/destroyable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/levelObjects/construction/triangle_wood.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/levelObjects/construction/circle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sprites/cursor.png" type="Texture" id=5]
 [ext_resource path="res://scenes/entities/levelObjects/enemy_shooter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/checkpoint.png" type="Texture" id=7]

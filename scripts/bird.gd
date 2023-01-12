@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends WithForce
 
 export(float) var death_velocity = 0.0
 export(float) var max_aim_distance = 200.0
@@ -9,7 +9,6 @@ var shoot_pos: Vector2
 
 var is_grounded = false
 
-var last_velocity: Vector2
 var can_take_damage = true
 export(float) var health = 100.0
 var initial_health
@@ -36,18 +35,20 @@ func _ready():
 	signal_manager.connect("respawn_player", self, "_on_respawn")
 	signal_manager.connect("fight_mode", self, "_on_fight_mode")
 	
+	signal_manager.emit_signal("player_damaged", health)
+	
 func _enter_tree():
 	spawn_point = global_position
 
-func _physics_process(_delta):
-	last_velocity = linear_velocity
+func _physics_process(delta):
+	._physics_process(delta)
+	if state_manager.fighting && linear_velocity.length_squared() < 10.0:
+		respawn()
 
 # Prevent the character from rotating
 func _integrate_forces(_state):
 	rotation = 0
 	angular_velocity = 0.0
-	pass
-	
 
 func set_shooting(var value: bool):
 	shooting = value
@@ -73,8 +74,9 @@ func throw_not_bird():
 	mode = RigidBody2D.MODE_RIGID
 	var speed = -shoot_pos
 	apply_central_impulse(speed * speed_modifier)
-	#if state_manager.fighting: # Only take damage when fighting
-	set_health(health - 10)
+	if state_manager.fighting: # Only take damage when fighting
+		set_health(health - 10)
+		print("suicidate uwu")
 
 # Detect when the player starts to aim
 func _on_aim_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
