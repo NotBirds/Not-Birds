@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/audio/fightmusic1.mp3" type="AudioStream" id=1]
+[ext_resource path="res://scripts/music_manager.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=3]
+
+[node name="music_manager" type="AudioStreamPlayer"]
+autoplay = true
+script = ExtResource( 2 )
+default = ExtResource( 3 )
+fighting = ExtResource( 1 )

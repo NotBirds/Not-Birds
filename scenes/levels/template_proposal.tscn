@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Front.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
+[ext_resource path="res://scenes/entities/levelObjects/rectanlge-5x30.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -92,7 +95,7 @@ shape = SubResource( 4 )
 position = Vector2( -200, -352 )
 
 [node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 12 )]
-position = Vector2( 232, -592 )
+position = Vector2( 271, -531 )
 
 [node name="enemy3" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
 position = Vector2( 448, -592 )
@@ -146,6 +149,31 @@ speed_modifier = 24.0
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
 player_path = NodePath("..")
+
+[node name="plank2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 354, -386 )
+
+[node name="plank7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 477, -412 )
+
+[node name="plank4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 292, -475 )
+rotation = 1.57079
+
+[node name="plank5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 416, -501 )
+rotation = 1.57079
+
+[node name="plank6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 539, -324 )
+rotation = 1.57079
+
+[node name="plank3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 230, -386 )
+
+[node name="music_manager" parent="." instance=ExtResource( 13 )]
+stream = ExtResource( 11 )
+autoplay = false
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]
