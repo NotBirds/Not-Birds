@@ -24,7 +24,7 @@ func _on_move_camera(new_pos: Vector2, new_zoom: Vector2):
 	target_pos = new_pos
 	target_zoom = new_zoom
 
-func _on_fight_mode_change(fighting: bool):
+func set_static_pos(fighting: bool):
 	if fighting:
 		var root = get_tree().get_root()
 		get_parent().remove_child(self)
@@ -34,3 +34,6 @@ func _on_fight_mode_change(fighting: bool):
 		get_parent().remove_child(self)
 		player.add_child(self)
 		position = Vector2.ZERO
+
+func _on_fight_mode_change(fighting: bool):
+	call_deferred("set_static_pos", fighting)

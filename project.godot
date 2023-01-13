@@ -39,6 +39,10 @@ boot_splash/image="res://assets/sprites/enemy.png"
 boot_splash/bg_color=Color( 1, 0, 0.843137, 1 )
 config/icon="res://assets/icon.png"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 SignalManager="*res://scenes/signal_manager.tscn"
