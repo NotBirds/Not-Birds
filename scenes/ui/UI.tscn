@@ -180,7 +180,8 @@ tracks/9/keys = {
 
 [node name="top_bar" type="TextureRect" parent="."]
 anchor_right = 1.0
-margin_top = -80.0
+margin_top = -7.14062
+margin_bottom = 72.8594
 texture = SubResource( 1 )
 expand = true
 
@@ -188,13 +189,14 @@ expand = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 80.0
+margin_top = -74.4969
+margin_bottom = 5.50305
 rect_pivot_offset = Vector2( 0, 80 )
 texture = SubResource( 1 )
 expand = true
 
 [node name="health_bar" parent="." instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.900696 )
 margin_left = 11.0
 margin_top = 92.0
 margin_right = 34.0
