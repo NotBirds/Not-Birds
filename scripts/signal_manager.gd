@@ -14,3 +14,5 @@ signal move_camera(pos, zoom)
 
 # warning-ignore:unused_signal
 signal fight_mode(fight)
+
+signal enemy_killed()

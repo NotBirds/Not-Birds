@@ -34,6 +34,7 @@ func _ready():
 	signal_manager.connect("change_spawnpoint", self, "change_spawnpoint")
 	signal_manager.connect("respawn_player", self, "_on_respawn")
 	signal_manager.connect("fight_mode", self, "_on_fight_mode")
+	signal_manager.connect("enemy_killed", self, "_on_kill")
 	
 	signal_manager.emit_signal("player_damaged", health)
 	
@@ -75,8 +76,7 @@ func throw_not_bird():
 	var speed = -shoot_pos
 	apply_central_impulse(speed * speed_modifier)
 	if state_manager.fighting: # Only take damage when fighting
-		set_health(health - 10)
-		print("suicidate uwu")
+		set_health(health - 25)
 
 # Detect when the player starts to aim
 func _on_aim_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
@@ -117,3 +117,6 @@ func _on_rbBird_body_entered(body):
 
 func _on_fight_mode(fighting: bool):
 	if !fighting: set_health(initial_health)
+
+func _on_kill():
+	set_health(health + 25)
