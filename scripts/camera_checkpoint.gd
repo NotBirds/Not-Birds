@@ -1,6 +1,5 @@
 extends Node2D
 
-export(NodePath) var camera_path
 export(Vector2) var new_zoom = Vector2(1.0, 1.0)
 
 onready var signal_manager = $"/root/SignalManager"

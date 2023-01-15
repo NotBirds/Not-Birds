@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sprites/materials/stone.png" type="Texture" id=10]
 [ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=11]
-[ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/entities/enemies/enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
 
@@ -179,7 +179,6 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
-frame = 1
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true

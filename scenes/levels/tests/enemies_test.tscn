@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/levelObjects/ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/enemies/enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/enemies/enemy_shooter.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 448 )
+
+[node name="level" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+
+[node name="geography" type="Node2D" parent="."]
+
+[node name="Ground" parent="geography" instance=ExtResource( 5 )]
+
+[node name="polygon" parent="geography/Ground" index="0"]
+polygon = PoolVector2Array( -64, 256, 1152, 256, 1152, 320, -64, 320 )
+
+[node name="collision" parent="geography/Ground" index="1"]
+polygon = PoolVector2Array( -64, 256, 1152, 256, 1152, 320, -64, 320 )
+
+[node name="entities" type="Node2D" parent="."]
+
+[node name="fight_zone" parent="entities" instance=ExtResource( 6 )]
+
+[node name="fight_mode_init" parent="entities/fight_zone" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="entities/fight_zone/fight_mode_init" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="entities/fight_zone/bird_killer" index="0"]
+position = Vector2( 1168, -128 )
+shape = SubResource( 2 )
+
+[node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 8 )]
+position = Vector2( 296, 216 )
+
+[node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 9 )]
+position = Vector2( 600, 216 )
+
+[node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
+position = Vector2( 0, 232 )
+
+[node name="camera_checkpoint" parent="entities" instance=ExtResource( 7 )]
+new_zoom = Vector2( 3, 3 )
+
+[node name="camera_destination" parent="entities/camera_checkpoint" index="0"]
+position = Vector2( 576, 64 )
+
+[node name="collision_shape" parent="entities/camera_checkpoint/activation_area" index="0"]
+position = Vector2( 0, 0 )
+
+[node name="rbBird" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera" parent="rbBird" instance=ExtResource( 3 )]
+player_path = NodePath("..")
+
+[node name="music_manager" parent="." instance=ExtResource( 1 )]
+
+[editable path="geography/Ground"]
+[editable path="entities/fight_zone"]
+[editable path="entities/fight_zone/fight_mode_init"]
+[editable path="entities/fight_zone/bird_killer"]
+[editable path="entities/camera_checkpoint"]
+[editable path="rbBird"]
