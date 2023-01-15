@@ -13,6 +13,9 @@ var can_take_damage = true
 export(float) var health = 100.0
 var initial_health
 export(Vector2) var spawn_point
+export(bool) var is_capsule = false
+export(int) var capsule_health = 3
+var counter = 0
 
 onready var aim_pointer: Sprite = $aim_pointer
 onready var hitbox: Area2D = $aim_area
@@ -59,10 +62,21 @@ func set_shooting(var value: bool):
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func break_capsule():
+	$capsule_sprite.visible = false
+	$sprite.visible = true
+	is_capsule = false
+	throw_not_bird()
+
 func _input(event):
 	if event is InputEventMouseButton && shooting:
 		if event.button_index == BUTTON_LEFT && !event.pressed:
-			throw_not_bird()
+			if is_capsule:
+				counter += 1
+				if counter == capsule_health:
+					break_capsule()
+			else:
+				throw_not_bird()
 			set_shooting(false)
 	elif event is InputEventMouseMotion && shooting:
 		shoot_pos = get_global_mouse_position() - global_position
@@ -72,6 +86,7 @@ func _input(event):
 		aim_pointer.global_position = shoot_pos + global_position
 
 func throw_not_bird():
+	
 	mode = RigidBody2D.MODE_RIGID
 	var speed = -shoot_pos
 	apply_central_impulse(speed * speed_modifier)

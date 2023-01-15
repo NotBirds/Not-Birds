@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
 [ext_resource path="res://scenes/entities/levelObjects/rectanlge-5x30.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/materials/stone.png" type="Texture" id=10]
 [ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
@@ -43,7 +44,6 @@ scale = Vector2( 3.56678, 3.55903 )
 texture = ExtResource( 6 )
 
 [node name="level_collision" type="StaticBody2D" parent="geography"]
-visible = false
 collision_layer = 8
 collision_mask = 8
 
@@ -58,9 +58,8 @@ position = Vector2( 300, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1570, -320 )
 
 [node name="level" type="CollisionPolygon2D" parent="geography/level_collision"]
-visible = false
 position = Vector2( 500, -1300 )
-polygon = PoolVector2Array( -600, 1400, 1800, 1400, 1800, 1090, 1300, 1100, 1300, 1000, 1800, 1000, 1800, 0, 2000, 0, 2000, 1800, -1100, 1800, -1100, -100, 900, -100, 900, -600, 1900, -600, 1900, -300, 1800, -300, 1800, -500, 1000, -490, 1000, 0, 436.908, 0, -1000, 0, -1000, 1000, 1100, 1000, 1100, 1100, -600, 1100 )
+polygon = PoolVector2Array( -948, 1748, 1804, 1756, 1804, 1108, 1292, 1108, 1292, 1004, 1800, 1000, 1800, 0, 2000, 0, 2000, 1800, -1100, 1800, -1100, -100, 900, -100, 900, -600, 1900, -600, 1900, -300, 1800, -300, 1800, -500, 1000, -490, 1000, 0, 436.908, 0, -1000, 0, -1000, 1000, 1100, 1000, 1100, 1108, -948, 1108 )
 
 [node name="wooden_platform" parent="geography" instance=ExtResource( 15 )]
 position = Vector2( 1720, -1328 )
@@ -113,7 +112,7 @@ new_zoom = Vector2( 2, 2 )
 position = Vector2( 224, 240 )
 
 [node name="collision_shape" parent="entities/camera_checkpoints/camera_checkpoint/activation_area" index="0"]
-position = Vector2( 256, 160 )
+position = Vector2( 64, 496 )
 shape = SubResource( 2 )
 
 [node name="camera_checkpoint2" parent="entities/camera_checkpoints" instance=ExtResource( 9 )]
@@ -134,7 +133,7 @@ position = Vector2( 1370, -300 )
 scale = Vector2( 1.72, 1 )
 
 [node name="player_checkpoint" parent="entities/player_checkpoints" instance=ExtResource( 4 )]
-position = Vector2( 160, 90 )
+position = Vector2( -40, 448 )
 
 [node name="construction" type="Node" parent="entities"]
 
@@ -160,13 +159,20 @@ rotation = 1.57079
 position = Vector2( 230, -386 )
 
 [node name="rbBird" parent="." instance=ExtResource( 1 )]
-position = Vector2( 160, 50 )
+position = Vector2( -40, 424 )
 mass = 3.0
 speed_modifier = 24.0
+is_capsule = true
+
+[node name="sprite" parent="rbBird" index="0"]
+visible = false
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
 player_path = NodePath("..")
+
+[node name="capsule_sprite" type="Sprite" parent="rbBird"]
+texture = ExtResource( 10 )
 
 [node name="music_manager" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 11 )
@@ -178,3 +184,4 @@ autoplay = false
 [editable path="entities/fight_zone/bird_killer"]
 [editable path="entities/camera_checkpoints/camera_checkpoint"]
 [editable path="entities/camera_checkpoints/camera_checkpoint2"]
+[editable path="rbBird"]

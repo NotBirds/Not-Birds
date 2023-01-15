@@ -21,6 +21,7 @@ position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
 [node name="ItemList" type="ItemList" parent="."]
+visible = false
 anchor_right = 0.404
 margin_left = -100.0
 margin_top = 22.0
