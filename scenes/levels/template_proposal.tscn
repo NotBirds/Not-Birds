@@ -48,18 +48,31 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="hole_stop1" type="CollisionPolygon2D" parent="geography/level_collision"]
-visible = false
 position = Vector2( -80, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1630, -320 )
 
 [node name="hole_stop2" type="CollisionPolygon2D" parent="geography/level_collision"]
-visible = false
 position = Vector2( 300, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1570, -320 )
 
-[node name="level" type="CollisionPolygon2D" parent="geography/level_collision"]
+[node name="level_part1" type="CollisionPolygon2D" parent="geography/level_collision"]
 position = Vector2( 500, -1300 )
 polygon = PoolVector2Array( -948, 1748, 1804, 1756, 1804, 1108, 1292, 1108, 1292, 1004, 1800, 1000, 1800, 0, 2000, 0, 2000, 1800, -1100, 1800, -1100, -100, 900, -100, 900, -600, 1900, -600, 1900, -300, 1800, -300, 1800, -500, 1000, -490, 1000, 0, 436.908, 0, -1000, 0, -1000, 1000, 1100, 1000, 1100, 1108, -948, 1108 )
+
+[node name="level_part2_top" type="CollisionPolygon2D" parent="geography/level_collision"]
+polygon = PoolVector2Array( 2400, -1600, 4160, -1600, 4160, -1664, 2400, -1664 )
+
+[node name="level_part2_down" type="CollisionPolygon2D" parent="geography/level_collision"]
+polygon = PoolVector2Array( 2496, -1304, 2496, -1240, 4160, -1248, 4160, -1304 )
+
+[node name="level_part3_top" type="CollisionPolygon2D" parent="geography/level_collision"]
+polygon = PoolVector2Array( 4160, -1664, 4160, -2624, 5504, -2624, 5504, -2688, 4096, -2688, 4096, -1664 )
+
+[node name="level_part3_down" type="CollisionPolygon2D" parent="geography/level_collision"]
+polygon = PoolVector2Array( 4096, -1248, 4096, -256, 5504, -256, 5504, -1024, 5248, -1024, 5248, -384, 4928, -384, 4928, -1024, 4664, -1024, 4672, -384, 4416, -384, 4416, -1024, 4160, -1024, 4160, -1248 )
+
+[node name="level_part4" type="CollisionPolygon2D" parent="geography/level_collision"]
+polygon = PoolVector2Array( 5504, -2624, 7616, -2624, 7616, -896, 6464, -896, 6208, -704, 6080, -320, 6080, -1024, 5824, -1024, 5824, -320, 5504, -320, 5504, -256, 7680, -256, 7680, -2688, 5504, -2688 )
 
 [node name="wooden_platform" parent="geography" instance=ExtResource( 15 )]
 position = Vector2( 1720, -1328 )
@@ -166,6 +179,7 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
+frame = 1
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
