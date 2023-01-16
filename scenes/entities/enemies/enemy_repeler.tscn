@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/entities/enemies/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/enemy_repeler.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 152.0
+
+[node name="enemy_repeler" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+force = 40.0
+
+[node name="repel_zone" type="Area2D" parent="." index="0"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="repel_zone" index="0"]
+modulate = Color( 0.160784, 0.0666667, 0.988235, 1 )
+shape = SubResource( 1 )
+
+[node name="projectile" type="Line2D" parent="repel_zone" index="1"]
+points = PoolVector2Array( 0, 0, 0, 0 )
+default_color = Color( 1, 1, 1, 1 )

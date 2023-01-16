@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/entities/enemies/enemy_repeler.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 384.083
+
+[node name="enemy_puller" instance=ExtResource( 1 )]
+force = -10.0
+
+[node name="CollisionShape2D" parent="repel_zone" index="0"]
+shape = SubResource( 1 )
+
+[node name="projectile" parent="repel_zone" index="1"]
+default_color = Color( 1, 0, 0, 1 )
