@@ -1,3 +1,4 @@
+class_name Enemy
 extends Destroyable
 
 onready var signal_manager = $"/root/SignalManager"

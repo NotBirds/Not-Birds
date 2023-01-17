@@ -29,6 +29,9 @@ func set_static_pos(fighting: bool):
 		var root = get_tree().get_root()
 		get_parent().remove_child(self)
 		root.add_child(self)
+		
+		# Move the camera to the player position again to make the
+		# transition to the actual camera position smooth.
 		global_position = player.global_position
 	else:
 		get_parent().remove_child(self)
