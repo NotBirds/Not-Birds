@@ -63,14 +63,16 @@ shape = SubResource( 4 )
 [node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 8 )]
 position = Vector2( 296, 216 )
 
-[node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 9 )]
+[node name="enemy_repeler" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 9 )]
 position = Vector2( 600, 216 )
 
-[node name="enemy_repeler" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 10 )]
+[node name="enemy_puller" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 10 )]
 position = Vector2( 904, 208 )
 
-[node name="enemy3" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 11 )]
+[node name="enemy_float" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 11 )]
 position = Vector2( 440, -24 )
+mass = 1.0
+gravity_scale = 0.5
 
 [node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
 position = Vector2( 0, 232 )
@@ -85,6 +87,9 @@ position = Vector2( 576, 64 )
 position = Vector2( 0, 0 )
 
 [node name="rbBird" parent="." instance=ExtResource( 4 )]
+
+[node name="sprite" parent="rbBird" index="0"]
+frame = 0
 
 [node name="Camera" parent="rbBird" instance=ExtResource( 3 )]
 player_path = NodePath("..")

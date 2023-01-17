@@ -4,4 +4,7 @@
 [ext_resource path="res://scripts/enemy_floating.gd" type="Script" id=2]
 
 [node name="enemy" instance=ExtResource( 1 )]
+mass = 0.05
 script = ExtResource( 2 )
+force = 10.0
+death_countdown = 2.5
