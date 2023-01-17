@@ -3,13 +3,13 @@
 [ext_resource path="res://scenes/inheritables/destroyable_shape.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 30 )
+extents = Vector2( 15, 66 )
 
 [node name="rectangle4x30" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( -9.53674e-07, -1.90735e-06 )
-scale = Vector2( 3.2, 2.06452 )
+position = Vector2( 0.25, 0.249981 )
+scale = Vector2( 7.9, 4.5 )
 
 [node name="physicsCollider" parent="." index="3"]
 shape = SubResource( 1 )
