@@ -16,7 +16,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 21.3776
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 57.8705
@@ -36,6 +36,7 @@ death_velocity = 5.0
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
+frame = 2
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
