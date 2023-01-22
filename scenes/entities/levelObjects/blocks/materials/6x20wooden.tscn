@@ -6,7 +6,6 @@
 [node name="rectangle4x50" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0.00168687, 0.249977 )
-rotation = 1.57079
-scale = Vector2( 0.578727, 1.20219 )
+position = Vector2( -0.125, -1.13687e-13 )
+scale = Vector2( 0.155229, 4.4 )
 texture = ExtResource( 2 )

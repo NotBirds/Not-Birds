@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -15,8 +15,9 @@
 [ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/4x40wooden.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/5x20wooden.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/6x6wooden.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10empty_wood.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wooden_triangle_corner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10wood.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1380, 520 )
@@ -95,6 +96,13 @@ position = Vector2( 1536, -384 )
 position = Vector2( -656, -392 )
 shape = SubResource( 1 )
 
+[node name="plank3" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="0" instance=ExtResource( 19 )]
+position = Vector2( -417, -42 )
+rotation = -1.57079
+
+[node name="plank4" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="1" instance=ExtResource( 19 )]
+position = Vector2( -463, -42 )
+
 [node name="bird_killer" parent="entities/fight_zone" index="1"]
 position = Vector2( 16, 152 )
 enabled = false
@@ -133,7 +141,7 @@ shape = SubResource( 2 )
 
 [node name="camera_checkpoint2" parent="entities/camera_checkpoints" instance=ExtResource( 9 )]
 position = Vector2( 1472, -512 )
-new_zoom = Vector2( 6, 6 )
+new_zoom = Vector2( 3, 3 )
 
 [node name="camera_destination" parent="entities/camera_checkpoints/camera_checkpoint2" index="0"]
 position = Vector2( -520, -192 )
@@ -162,6 +170,22 @@ position = Vector2( 528, -376 )
 [node name="wooden4x34" parent="entities/construction" instance=ExtResource( 8 )]
 position = Vector2( 504, -568 )
 
+[node name="wooden4x36" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 504, -726 )
+
+[node name="wooden4x39" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 488, -884 )
+
+[node name="wooden4x40" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 384, -884 )
+
+[node name="wooden4x37" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 368, -726 )
+
+[node name="wooden4x38" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 436, -805 )
+rotation = 1.57079
+
 [node name="wooden4x35" parent="entities/construction" instance=ExtResource( 8 )]
 position = Vector2( 368, -568 )
 
@@ -184,42 +208,8 @@ position = Vector2( 440, -647 )
 rotation = 1.57079
 
 [node name="rectangle4x34" parent="entities/construction" instance=ExtResource( 14 )]
-position = Vector2( 440, -875 )
+position = Vector2( 440, -963 )
 rotation = 1.57079
-
-[node name="rectangle4x50" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 512, -704 )
-
-[node name="rectangle4x51" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 368, -704 )
-
-[node name="rectangle4x52" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 368, -761 )
-rotation = -4.71238
-
-[node name="rectangle4x53" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 512, -761 )
-rotation = -4.71238
-
-[node name="rectangle4x54" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 512, -818 )
-rotation = -6.28318
-
-[node name="rectangle4x55" parent="entities/construction" instance=ExtResource( 16 )]
-position = Vector2( 368, -818 )
-rotation = -6.28318
-
-[node name="rectangle4x56" parent="entities/construction" instance=ExtResource( 17 )]
-position = Vector2( 480, -786 )
-
-[node name="rectangle4x57" parent="entities/construction" instance=ExtResource( 17 )]
-position = Vector2( 544, -786 )
-
-[node name="rectangle4x58" parent="entities/construction" instance=ExtResource( 17 )]
-position = Vector2( 400, -786 )
-
-[node name="rectangle4x59" parent="entities/construction" instance=ExtResource( 17 )]
-position = Vector2( 336, -786 )
 
 [node name="rbBird" parent="." instance=ExtResource( 1 )]
 position = Vector2( -40, 424 )
@@ -229,6 +219,7 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
+frame = 0
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
@@ -240,6 +231,33 @@ texture = ExtResource( 10 )
 [node name="music_manager" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 11 )
 autoplay = false
+
+[node name="plank4" parent="." instance=ExtResource( 20 )]
+position = Vector2( 563, -332 )
+
+[node name="plank5" parent="." instance=ExtResource( 20 )]
+position = Vector2( 563, -377 )
+
+[node name="plank6" parent="." instance=ExtResource( 20 )]
+position = Vector2( 563, -422 )
+
+[node name="plank7" parent="." instance=ExtResource( 20 )]
+position = Vector2( 608, -332 )
+
+[node name="plank8" parent="." instance=ExtResource( 20 )]
+position = Vector2( 608, -377 )
+
+[node name="plank10" parent="." instance=ExtResource( 16 )]
+position = Vector2( 563, -467 )
+
+[node name="plank11" parent="." instance=ExtResource( 16 )]
+position = Vector2( 608, -422 )
+
+[node name="plank12" parent="." instance=ExtResource( 16 )]
+position = Vector2( 608, -467 )
+
+[node name="plank13" parent="." instance=ExtResource( 16 )]
+position = Vector2( 563, -512 )
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]

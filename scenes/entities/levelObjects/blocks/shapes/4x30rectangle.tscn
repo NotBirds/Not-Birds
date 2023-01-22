@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/inheritables/destroyable_shape.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 66 )
+extents = Vector2( 12, 66 )
 
 [node name="rectangle4x30" instance=ExtResource( 2 )]
 

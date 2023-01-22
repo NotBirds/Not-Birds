@@ -10,3 +10,6 @@ position = Vector2( 0.00011153, 0.0388434 )
 rotation = 1.57079
 scale = Vector2( 0.862386, 1.2113 )
 texture = ExtResource( 2 )
+
+[node name="physicsCollider" parent="." index="3"]
+position = Vector2( 0, 0 )
