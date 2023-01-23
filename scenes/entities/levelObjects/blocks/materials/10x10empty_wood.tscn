@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/sprites/materials/empty_wood.png" type="Texture" id=2]
 
 [node name="plank2" instance=ExtResource( 1 )]
+mass = 0.204082
+initial_health = 800.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/4x40wooden.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10empty_wood.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wooden_triangle_corner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10wood.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -96,12 +95,33 @@ position = Vector2( 1536, -384 )
 position = Vector2( -656, -392 )
 shape = SubResource( 1 )
 
-[node name="plank3" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="0" instance=ExtResource( 19 )]
-position = Vector2( -417, -42 )
-rotation = -1.57079
+[node name="plank2" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="0" instance=ExtResource( 16 )]
+position = Vector2( -317, 309 )
 
-[node name="plank4" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="1" instance=ExtResource( 19 )]
-position = Vector2( -463, -42 )
+[node name="plank3" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="1" instance=ExtResource( 16 )]
+position = Vector2( -272, 309 )
+
+[node name="plank4" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="2" instance=ExtResource( 16 )]
+position = Vector2( -272, 264 )
+
+[node name="plank7" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="3" instance=ExtResource( 16 )]
+position = Vector2( -227, 444 )
+
+[node name="plank8" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="4" instance=ExtResource( 16 )]
+position = Vector2( -227, 399 )
+mass = 0.714286
+
+[node name="plank9" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="5" instance=ExtResource( 16 )]
+position = Vector2( -182, 444 )
+
+[node name="plank10" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="6" instance=ExtResource( 16 )]
+position = Vector2( -182, 399 )
+
+[node name="plank5" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="7" instance=ExtResource( 16 )]
+position = Vector2( -317, 264 )
+
+[node name="plank6" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="8" instance=ExtResource( 16 )]
+position = Vector2( -317, 219 )
 
 [node name="bird_killer" parent="entities/fight_zone" index="1"]
 position = Vector2( 16, 152 )
@@ -112,16 +132,16 @@ position = Vector2( 151, 0 )
 shape = SubResource( 4 )
 
 [node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 12 )]
-position = Vector2( -200, -352 )
+position = Vector2( 446, -892 )
 
 [node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 12 )]
-position = Vector2( 440, -696 )
+position = Vector2( -80, -334 )
 
 [node name="enemy3" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
-position = Vector2( 440, -536 )
+position = Vector2( 440, -524 )
 
 [node name="enemy4" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 12 )]
-position = Vector2( 432, -360 )
+position = Vector2( 443, -333 )
 
 [node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
 position = Vector2( -112, 48 )
@@ -162,54 +182,90 @@ position = Vector2( -40, 448 )
 [node name="construction" type="Node" parent="entities"]
 
 [node name="wooden4x30" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 344, -376 )
+position = Vector2( 344, -367 )
 
 [node name="wooden4x31" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 528, -376 )
-
-[node name="wooden4x34" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 504, -568 )
-
-[node name="wooden4x36" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 504, -726 )
-
-[node name="wooden4x39" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 488, -884 )
-
-[node name="wooden4x40" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 384, -884 )
-
-[node name="wooden4x37" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 368, -726 )
-
-[node name="wooden4x38" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 436, -805 )
-rotation = 1.57079
-
-[node name="wooden4x35" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 368, -568 )
+position = Vector2( 528, -367 )
 
 [node name="wooden4x32" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 368, -376 )
+position = Vector2( 369, -367 )
 
 [node name="wooden4x33" parent="entities/construction" instance=ExtResource( 8 )]
-position = Vector2( 504, -376 )
+position = Vector2( 503, -367 )
+
+[node name="wooden4x34" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 364, -550 )
+
+[node name="wooden4x35" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 516, -550 )
+
+[node name="wooden4x36" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 389, -550 )
+
+[node name="wooden4x37" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 491, -550 )
 
 [node name="rectangle4x30" parent="entities/construction" instance=ExtResource( 14 )]
-position = Vector2( 440, -456 )
+position = Vector2( 440, -446 )
 rotation = 1.57079
 
 [node name="rectangle4x32" parent="entities/construction" instance=ExtResource( 14 )]
-position = Vector2( 440, -488 )
+position = Vector2( 440, -471 )
 rotation = 1.57079
+
+[node name="rectangle4x31" parent="entities/construction" instance=ExtResource( 14 )]
+position = Vector2( 440, -629 )
+rotation = 1.57079
+mass = 1.0
 
 [node name="rectangle4x33" parent="entities/construction" instance=ExtResource( 14 )]
-position = Vector2( 440, -647 )
+position = Vector2( 440, -654 )
 rotation = 1.57079
+mass = 1.0
+
+[node name="wooden4x38" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 364, -733 )
+
+[node name="wooden4x39" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 516, -733 )
+
+[node name="wooden4x40" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 389, -733 )
+
+[node name="wooden4x41" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 491, -733 )
 
 [node name="rectangle4x34" parent="entities/construction" instance=ExtResource( 14 )]
-position = Vector2( 440, -963 )
+position = Vector2( 440, -812 )
 rotation = 1.57079
+mass = 1.0
+
+[node name="rectangle4x35" parent="entities/construction" instance=ExtResource( 14 )]
+position = Vector2( 440, -837 )
+rotation = 1.57079
+mass = 1.0
+
+[node name="wooden4x42" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 364, -916 )
+
+[node name="wooden4x43" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 516, -916 )
+
+[node name="wooden4x44" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 389, -916 )
+
+[node name="wooden4x45" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 491, -916 )
+
+[node name="rectangle4x36" parent="entities/construction" instance=ExtResource( 14 )]
+position = Vector2( 440, -995 )
+rotation = 1.57079
+mass = 1.0
+
+[node name="rectangle4x37" parent="entities/construction" instance=ExtResource( 14 )]
+position = Vector2( 440, -1020 )
+rotation = 1.57079
+mass = 1.0
 
 [node name="rbBird" parent="." instance=ExtResource( 1 )]
 position = Vector2( -40, 424 )
@@ -219,7 +275,6 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
-frame = 0
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
@@ -232,32 +287,26 @@ texture = ExtResource( 10 )
 stream = ExtResource( 11 )
 autoplay = false
 
-[node name="plank4" parent="." instance=ExtResource( 20 )]
+[node name="plank2" parent="." instance=ExtResource( 20 )]
 position = Vector2( 563, -332 )
 
-[node name="plank5" parent="." instance=ExtResource( 20 )]
+[node name="plank3" parent="." instance=ExtResource( 20 )]
 position = Vector2( 563, -377 )
 
-[node name="plank6" parent="." instance=ExtResource( 20 )]
+[node name="plank4" parent="." instance=ExtResource( 20 )]
 position = Vector2( 563, -422 )
+
+[node name="plank5" parent="." instance=ExtResource( 20 )]
+position = Vector2( 608, -422 )
+
+[node name="plank8" parent="." instance=ExtResource( 20 )]
+position = Vector2( 653, -422 )
+
+[node name="plank6" parent="." instance=ExtResource( 20 )]
+position = Vector2( 608, -377 )
 
 [node name="plank7" parent="." instance=ExtResource( 20 )]
 position = Vector2( 608, -332 )
-
-[node name="plank8" parent="." instance=ExtResource( 20 )]
-position = Vector2( 608, -377 )
-
-[node name="plank10" parent="." instance=ExtResource( 16 )]
-position = Vector2( 563, -467 )
-
-[node name="plank11" parent="." instance=ExtResource( 16 )]
-position = Vector2( 608, -422 )
-
-[node name="plank12" parent="." instance=ExtResource( 16 )]
-position = Vector2( 608, -467 )
-
-[node name="plank13" parent="." instance=ExtResource( 16 )]
-position = Vector2( 563, -512 )
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]

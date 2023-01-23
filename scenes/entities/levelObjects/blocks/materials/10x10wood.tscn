@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/sprites/materials/wooden4x30.png" type="Texture" id=2]
 
 [node name="plank2" instance=ExtResource( 1 )]
+mass = 0.306122
+initial_health = 800.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.287582, 2.2 )
