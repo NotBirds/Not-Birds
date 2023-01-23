@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/sprites/materials/wooden4x30.png" type="Texture" id=2]
 
 [node name="rectangle4x50" instance=ExtResource( 1 )]
+mass = 0.612245
+initial_health = 600.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0.0923314, -0.0562658 )

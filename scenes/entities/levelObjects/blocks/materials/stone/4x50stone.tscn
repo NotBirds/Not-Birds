@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/entities/levelObjects/blocks/shapes/4x50rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/materials/wooden4x30.png" type="Texture" id=2]
+
+[node name="rectangle4x50" instance=ExtResource( 1 )]
+mass = 3.06122
+initial_health = 1000.0
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -0.0041151, 0.172638 )
+rotation = 1.57079
+scale = Vector2( 1.4404, 1.20236 )
+texture = ExtResource( 2 )

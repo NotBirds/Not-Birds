@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -7,16 +7,17 @@
 [ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Front.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/4x30wooden.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x30wooden.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sprites/materials/stone.png" type="Texture" id=10]
 [ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://scenes/entities/levelObjects/enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/4x40wooden.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x40wooden.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10empty_wood.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/10x10wood.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/10x10empty_wood.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/stone/4x20stone.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/stone/4x50stone.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1380, 520 )
@@ -96,32 +97,19 @@ position = Vector2( -656, -392 )
 shape = SubResource( 1 )
 
 [node name="plank2" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="0" instance=ExtResource( 16 )]
-position = Vector2( -317, 309 )
+position = Vector2( -616, 453 )
 
 [node name="plank3" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="1" instance=ExtResource( 16 )]
-position = Vector2( -272, 309 )
+position = Vector2( -571, 453 )
 
 [node name="plank4" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="2" instance=ExtResource( 16 )]
-position = Vector2( -272, 264 )
+position = Vector2( -571, 408 )
 
-[node name="plank7" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="3" instance=ExtResource( 16 )]
-position = Vector2( -227, 444 )
+[node name="plank5" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="3" instance=ExtResource( 16 )]
+position = Vector2( -616, 408 )
 
-[node name="plank8" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="4" instance=ExtResource( 16 )]
-position = Vector2( -227, 399 )
-mass = 0.714286
-
-[node name="plank9" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="5" instance=ExtResource( 16 )]
-position = Vector2( -182, 444 )
-
-[node name="plank10" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="6" instance=ExtResource( 16 )]
-position = Vector2( -182, 399 )
-
-[node name="plank5" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="7" instance=ExtResource( 16 )]
-position = Vector2( -317, 264 )
-
-[node name="plank6" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="8" instance=ExtResource( 16 )]
-position = Vector2( -317, 219 )
+[node name="plank6" parent="entities/fight_zone/fight_mode_init/CollisionShape2D" index="4" instance=ExtResource( 16 )]
+position = Vector2( -616, 363 )
 
 [node name="bird_killer" parent="entities/fight_zone" index="1"]
 position = Vector2( 16, 152 )
@@ -132,16 +120,16 @@ position = Vector2( 151, 0 )
 shape = SubResource( 4 )
 
 [node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 12 )]
-position = Vector2( 446, -892 )
+position = Vector2( 800, -336 )
 
 [node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 12 )]
-position = Vector2( -80, -334 )
+position = Vector2( 888, -336 )
 
 [node name="enemy3" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
-position = Vector2( 440, -524 )
+position = Vector2( 696, -560 )
 
-[node name="enemy4" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 12 )]
-position = Vector2( 443, -333 )
+[node name="enemy5" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 12 )]
+position = Vector2( 695, -333 )
 
 [node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
 position = Vector2( -112, 48 )
@@ -268,13 +256,14 @@ rotation = 1.57079
 mass = 1.0
 
 [node name="rbBird" parent="." instance=ExtResource( 1 )]
-position = Vector2( -40, 424 )
+position = Vector2( 1560, -368 )
 mass = 3.0
 speed_modifier = 24.0
 is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
+frame = 0
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
@@ -287,26 +276,34 @@ texture = ExtResource( 10 )
 stream = ExtResource( 11 )
 autoplay = false
 
-[node name="plank2" parent="." instance=ExtResource( 20 )]
-position = Vector2( 563, -332 )
+[node name="rectangle4x50" parent="." instance=ExtResource( 17 )]
+position = Vector2( 643, -344 )
 
-[node name="plank3" parent="." instance=ExtResource( 20 )]
-position = Vector2( 563, -377 )
+[node name="rectangle4x51" parent="." instance=ExtResource( 17 )]
+position = Vector2( 739, -344 )
 
-[node name="plank4" parent="." instance=ExtResource( 20 )]
-position = Vector2( 563, -422 )
+[node name="rectangle4x53" parent="." instance=ExtResource( 17 )]
+position = Vector2( 723, -456.1 )
 
-[node name="plank5" parent="." instance=ExtResource( 20 )]
-position = Vector2( 608, -422 )
+[node name="rectangle4x54" parent="." instance=ExtResource( 17 )]
+position = Vector2( 659, -456.1 )
 
-[node name="plank8" parent="." instance=ExtResource( 20 )]
-position = Vector2( 653, -422 )
+[node name="rectangle4x52" parent="." instance=ExtResource( 17 )]
+position = Vector2( 691, -400 )
+rotation = -1.57079
 
-[node name="plank6" parent="." instance=ExtResource( 20 )]
-position = Vector2( 608, -377 )
+[node name="rectangle4x55" parent="." instance=ExtResource( 17 )]
+position = Vector2( 691, -513 )
+rotation = -1.57079
 
-[node name="plank7" parent="." instance=ExtResource( 20 )]
-position = Vector2( 608, -332 )
+[node name="rectangle4x56" parent="." instance=ExtResource( 18 )]
+position = Vector2( 608, -411 )
+
+[node name="rectangle4x57" parent="." instance=ExtResource( 18 )]
+position = Vector2( 583, -411 )
+
+[node name="rectangle4x58" parent="." instance=ExtResource( 18 )]
+position = Vector2( 558, -411 )
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]

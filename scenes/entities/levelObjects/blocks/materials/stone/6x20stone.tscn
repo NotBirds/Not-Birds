@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/entities/levelObjects/blocks/shapes/6x20rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/materials/wooden4x30.png" type="Texture" id=2]
+
+[node name="rectangle4x50" instance=ExtResource( 1 )]
+mass = 3.06122
+initial_health = 1000.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -0.125, -1.13687e-13 )
+scale = Vector2( 0.155229, 4.4 )
+texture = ExtResource( 2 )
