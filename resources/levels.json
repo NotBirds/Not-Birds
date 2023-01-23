@@ -1,0 +1,14 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "scene_path": "res://scenes/levels/template_proposal.tscn",
+      "display_name": "1-1"
+    },
+    {
+      "id": 2,
+      "scene_path": "res://scenes/levels/level3.tscn",
+      "display_name": "1-2"
+    }
+  ]
+}

@@ -179,6 +179,7 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
+frame = 2
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true

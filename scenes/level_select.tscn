@@ -1,0 +1,41 @@
+[gd_scene format=2]
+
+[node name="level_select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="levels" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 60.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="level" type="VBoxContainer" parent="levels"]
+margin_right = 36.0
+margin_bottom = 400.0
+alignment = 1
+
+[node name="name" type="Label" parent="levels/level"]
+margin_top = 184.0
+margin_right = 36.0
+margin_bottom = 198.0
+text = "1 - 1"
+align = 1
+valign = 1
+
+[node name="time" type="Label" parent="levels/level"]
+margin_top = 202.0
+margin_right = 36.0
+margin_bottom = 216.0
+text = "23:40"
+align = 1
+valign = 1
+
+[node name="back" type="Button" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Back"

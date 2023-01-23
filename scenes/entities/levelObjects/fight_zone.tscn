@@ -19,9 +19,11 @@ It will end when the player kills al the enemies linked to this object."
 
 [node name="win_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "Effects"
 
 [node name="start_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "Effects"
 
 [node name="enemies" type="Node" parent="."]
 

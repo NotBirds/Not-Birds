@@ -36,7 +36,6 @@ death_velocity = 5.0
 position = Vector2( -1.4, 6.2 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
@@ -44,6 +43,7 @@ shape = SubResource( 1 )
 
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+bus = "Effects"
 
 [node name="aim_area" type="Area2D" parent="."]
 
