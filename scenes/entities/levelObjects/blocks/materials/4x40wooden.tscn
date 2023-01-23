@@ -5,7 +5,7 @@
 
 [node name="rectangle4x30" instance=ExtResource( 1 )]
 mass = 0.714286
-initial_health = 800.0
+initial_health = 600.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0.0823867, 0.249981 )
