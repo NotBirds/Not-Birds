@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/ui/health_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://animations/ui/fight_disable.tres" type="Animation" id=2]
 [ext_resource path="res://scripts/fight_mode_animation.gd" type="Script" id=3]
+[ext_resource path="res://scripts/level_ui.gd" type="Script" id=4]
 
 [sub_resource type="GradientTexture2D" id=1]
 
@@ -177,6 +178,8 @@ tracks/9/keys = {
 }
 
 [node name="UI" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 4 )
 
 [node name="top_bar" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -210,3 +213,33 @@ anims/fight_disable = ExtResource( 2 )
 anims/fight_enable = SubResource( 3 )
 anims/fighting = SubResource( 4 )
 script = ExtResource( 3 )
+
+[node name="pause_overlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.478431 )
+
+[node name="buttons" type="HSplitContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -178.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 40.0
+
+[node name="pause" type="Button" parent="buttons"]
+margin_right = 50.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Pause"
+
+[node name="configuration" type="Button" parent="buttons"]
+margin_left = 62.0
+margin_right = 158.0
+margin_bottom = 20.0
+text = "Configuration"
+
+[connection signal="toggled" from="buttons/pause" to="." method="_on_pause_toggled"]
+[connection signal="pressed" from="buttons/configuration" to="." method="_on_configuration_pressed"]

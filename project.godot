@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Not Birds"
-run/main_scene="res://scenes/levels/template_proposal.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 run/low_processor_mode=true
 boot_splash/image="res://assets/sprites/enemy.png"
 boot_splash/bg_color=Color( 1, 0, 0.843137, 1 )
@@ -47,6 +47,7 @@ default_bus_layout=""
 
 SignalManager="*res://scenes/signal_manager.tscn"
 StateManager="*res://scenes/state_manager.tscn"
+LevelManager="*res://scenes/level_manager.tscn"
 
 [debug]
 
@@ -65,6 +66,7 @@ window/stretch/aspect="keep"
 [global]
 
 autoload=false
+scene=false
 
 [gui]
 
