@@ -1,8 +1,8 @@
 class_name Destroyable
 extends WithForce
 
-export(float) var initial_health = 800.0
-var health = initial_health
+export(float) var initial_health
+var health
 export(float) var base_collision_pitch = 1.0
 export(float) var base_destroy_pitch = 1.0
 
@@ -18,6 +18,7 @@ func _on_plank_body_entered(body):
 			damage(impact_force * pow(2, body.mass))
 
 func _ready():
+	health = initial_health
 	$audioCollision.pitch_scale = base_collision_pitch
 	$audioDestroy.pitch_scale = base_destroy_pitch
 

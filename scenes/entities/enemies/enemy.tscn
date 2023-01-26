@@ -7,6 +7,7 @@
 [node name="enemy" instance=ExtResource( 1 )]
 collision_layer = 4
 script = ExtResource( 3 )
+initial_health = 100.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.260606, 0.260606 )

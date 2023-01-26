@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprites/player/front/1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/player/front/3.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://scripts/bird.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/dead.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/sprites/cursor.png" type="Texture" id=6]
+
+[sub_resource type="PhysicsMaterial" id=5]
+rough = true
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -16,7 +21,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 21.3776
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 57.8705
@@ -27,6 +32,7 @@ length = 24.0
 [node name="rbBird" type="RigidBody2D"]
 collision_layer = 15
 collision_mask = 15
+physics_material_override = SubResource( 5 )
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 4 )
@@ -40,6 +46,9 @@ frame = 1
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="csHitbox2" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
