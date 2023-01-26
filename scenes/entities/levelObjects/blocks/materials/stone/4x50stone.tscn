@@ -5,7 +5,7 @@
 
 [node name="rectangle4x50" instance=ExtResource( 1 )]
 mass = 3.06122
-initial_health = 1000.0
+initial_health = 1200.0
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0, 0, 0, 1 )

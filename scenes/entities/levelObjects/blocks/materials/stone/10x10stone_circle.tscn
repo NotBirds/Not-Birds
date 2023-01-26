@@ -4,8 +4,9 @@
 [ext_resource path="res://assets/sprites/cursor.png" type="Texture" id=2]
 
 [node name="plank2" instance=ExtResource( 1 )]
+modulate = Color( 0, 0, 0, 1 )
 mass = 3.06122
-initial_health = 1000.0
+initial_health = 1200.0
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.462745, 0.223529, 0.0117647, 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/entities/scnBird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/levelCamera.tscn" type="PackedScene" id=2]
@@ -16,8 +16,6 @@
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x40wooden.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/10x10empty_wood.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/stone/4x20stone.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/stone/4x50stone.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1380, 520 )
@@ -125,10 +123,7 @@ position = Vector2( 800, -336 )
 [node name="enemy2" parent="entities/fight_zone/enemies" index="1" instance=ExtResource( 12 )]
 position = Vector2( 888, -336 )
 
-[node name="enemy3" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
-position = Vector2( 696, -560 )
-
-[node name="enemy5" parent="entities/fight_zone/enemies" index="3" instance=ExtResource( 12 )]
+[node name="enemy5" parent="entities/fight_zone/enemies" index="2" instance=ExtResource( 12 )]
 position = Vector2( 695, -333 )
 
 [node name="new_spawnpoint" parent="entities/fight_zone" index="5"]
@@ -174,6 +169,12 @@ position = Vector2( 344, -367 )
 
 [node name="wooden4x31" parent="entities/construction" instance=ExtResource( 8 )]
 position = Vector2( 528, -367 )
+
+[node name="wooden4x46" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 478, -367 )
+
+[node name="wooden4x47" parent="entities/construction" instance=ExtResource( 8 )]
+position = Vector2( 394, -367 )
 
 [node name="wooden4x32" parent="entities/construction" instance=ExtResource( 8 )]
 position = Vector2( 369, -367 )
@@ -263,7 +264,7 @@ is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
-frame = 0
+frame = 1
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
@@ -275,35 +276,6 @@ texture = ExtResource( 10 )
 [node name="music_manager" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 11 )
 autoplay = false
-
-[node name="rectangle4x50" parent="." instance=ExtResource( 17 )]
-position = Vector2( 643, -344 )
-
-[node name="rectangle4x51" parent="." instance=ExtResource( 17 )]
-position = Vector2( 739, -344 )
-
-[node name="rectangle4x53" parent="." instance=ExtResource( 17 )]
-position = Vector2( 723, -456.1 )
-
-[node name="rectangle4x54" parent="." instance=ExtResource( 17 )]
-position = Vector2( 659, -456.1 )
-
-[node name="rectangle4x52" parent="." instance=ExtResource( 17 )]
-position = Vector2( 691, -400 )
-rotation = -1.57079
-
-[node name="rectangle4x55" parent="." instance=ExtResource( 17 )]
-position = Vector2( 691, -513 )
-rotation = -1.57079
-
-[node name="rectangle4x56" parent="." instance=ExtResource( 18 )]
-position = Vector2( 608, -411 )
-
-[node name="rectangle4x57" parent="." instance=ExtResource( 18 )]
-position = Vector2( 583, -411 )
-
-[node name="rectangle4x58" parent="." instance=ExtResource( 18 )]
-position = Vector2( 558, -411 )
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]
