@@ -32,11 +32,13 @@ length = 24.0
 [node name="rbBird" type="RigidBody2D"]
 collision_layer = 15
 collision_mask = 15
+mass = 3.0
 physics_material_override = SubResource( 5 )
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 4 )
 death_velocity = 5.0
+speed_modifier = 24.0
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.4, 6.2 )
@@ -52,7 +54,6 @@ shape = SubResource( 1 )
 
 [node name="audioDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-bus = "Effects"
 
 [node name="aim_area" type="Area2D" parent="."]
 

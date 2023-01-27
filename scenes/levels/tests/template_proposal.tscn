@@ -102,6 +102,12 @@ enabled = false
 position = Vector2( 151, 0 )
 shape = SubResource( 4 )
 
+[node name="win_audio" parent="entities/fight_zone" index="2"]
+bus = "Master"
+
+[node name="start_audio" parent="entities/fight_zone" index="3"]
+bus = "Master"
+
 [node name="enemy" parent="entities/fight_zone/enemies" index="0" instance=ExtResource( 12 )]
 position = Vector2( 800, -336 )
 
@@ -257,14 +263,11 @@ position = Vector2( 248, -379 )
 position = Vector2( 248, -424 )
 
 [node name="rbBird" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1560, -368 )
-mass = 3.0
-speed_modifier = 24.0
+position = Vector2( -11, 315 )
 is_capsule = true
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
-frame = 0
 
 [node name="camera" parent="rbBird" instance=ExtResource( 2 )]
 rotating = true
@@ -276,6 +279,7 @@ texture = ExtResource( 10 )
 [node name="music_manager" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 11 )
 autoplay = false
+bus = "Master"
 
 [editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zone"]
