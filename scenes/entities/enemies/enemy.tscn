@@ -10,8 +10,8 @@ script = ExtResource( 3 )
 initial_health = 100.0
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 0.260606, 0.260606 )
+scale = Vector2( 0.104, 0.104 )
 texture = ExtResource( 2 )
 
 [node name="physicsCollider" parent="." index="3"]
-polygon = PoolVector2Array( -38, 31, 32, 30, 5, -39, -13, -39 )
+polygon = PoolVector2Array( -13, 12, 13, 12, 3, -14, -5, -14 )

@@ -21,10 +21,10 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 22.0
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 57.8705
+radius = 35.0143
 
 [sub_resource type="RayShape2D" id=4]
 length = 24.0
@@ -41,9 +41,9 @@ death_velocity = 5.0
 speed_modifier = 24.0
 
 [node name="sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1.4, 6.2 )
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.08, 0.08 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="csHitbox" type="CollisionShape2D" parent="."]
@@ -63,7 +63,7 @@ shape = SubResource( 3 )
 [node name="aim_pointer" type="Sprite" parent="."]
 visible = false
 position = Vector2( 96, 0 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.1, 0.1 )
 z_index = 4096
 z_as_relative = false
 texture = ExtResource( 6 )

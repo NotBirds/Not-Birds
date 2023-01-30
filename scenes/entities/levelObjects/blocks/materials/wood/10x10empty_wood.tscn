@@ -4,10 +4,10 @@
 [ext_resource path="res://assets/sprites/materials/empty_wood.png" type="Texture" id=2]
 
 [node name="plank2" instance=ExtResource( 1 )]
-mass = 0.204082
+gravity_scale = 10.0
 initial_health = 800.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0 )
-scale = Vector2( 0.0954447, 0.0954712 )
+scale = Vector2( 0.038, 0.038 )
 texture = ExtResource( 2 )

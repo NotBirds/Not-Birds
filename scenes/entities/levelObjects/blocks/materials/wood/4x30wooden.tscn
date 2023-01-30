@@ -9,17 +9,16 @@ bounce = 1.0
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 66 )
+extents = Vector2( 5, 27 )
 
 [node name="wooden4x30" instance=ExtResource( 1 )]
-mass = 3.0
 physics_material_override = SubResource( 1 )
 initial_health = 800.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0.00011153, 0.0388434 )
 rotation = 1.57079
-scale = Vector2( 0.862386, 1.2113 )
+scale = Vector2( 0.345, 0.484 )
 texture = ExtResource( 2 )
 
 [node name="physicsCollider" parent="." index="3"]
