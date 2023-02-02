@@ -15,9 +15,6 @@ __meta__ = {
 "_editor_description_": "Put a CollisionShape2D or a CollisionPolygon2D called \"physicsCollider\""
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 9.53674e-07, 0 )
-
 [node name="audioCollision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -1.0

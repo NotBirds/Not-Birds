@@ -1,6 +1,5 @@
 extends WithForce
 
-export(float) var death_velocity = 0.0
 export(float) var max_aim_distance = 200.0
 export(float) var speed_modifier = 8.0
 
@@ -27,10 +26,6 @@ onready var state_manager = $"/root/StateManager"
 
 
 func _ready():
-	# length_squared() is more efficient than length(),
-	# so we square death_velocity too
-	death_velocity *= death_velocity
-	
 	initial_health = health
 
 	# Connect signals
@@ -52,7 +47,7 @@ func _physics_process(delta):
 # Prevent the character from rotating
 func _integrate_forces(_state):
 	rotation = 0
-	angular_velocity = 0.0
+	angular_velocity = 0
 
 func set_shooting(var value: bool):
 	shooting = value
@@ -86,7 +81,6 @@ func _input(event):
 		aim_pointer.global_position = shoot_pos + global_position
 
 func throw_not_bird():
-	
 	mode = RigidBody2D.MODE_RIGID
 	var speed = -shoot_pos
 	apply_central_impulse(speed * speed_modifier)

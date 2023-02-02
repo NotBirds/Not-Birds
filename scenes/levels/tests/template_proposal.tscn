@@ -7,15 +7,15 @@
 [ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Front.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x30wooden.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/old/wood/4x30wooden.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sprites/materials/stone.png" type="Texture" id=10]
 [ext_resource path="res://assets/audio/level1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://scenes/entities/enemies/enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/music_manager.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x40wooden.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/old/wood/4x40wooden.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/10x10empty_wood.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/old/wood/10x10empty_wood.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1380, 520 )
