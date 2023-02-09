@@ -3,18 +3,18 @@ extends WithForce
 export(float) var max_aim_distance = 200.0
 export(float) var speed_modifier = 8.0
 
-var shooting = false
-var shoot_pos: Vector2
-
-var is_grounded = false
-
 var can_take_damage = true
 export(float) var health = 100.0
-var initial_health
 export(Vector2) var spawn_point
 export(bool) var is_capsule = false
 export(int) var capsule_health = 3
+var is_respawned = false # Only false when it has just been respawned
+
+var initial_health
 var counter = 0
+var shooting = false
+var shoot_pos: Vector2
+var is_grounded = false
 
 onready var aim_pointer: Sprite = $aim_pointer
 onready var hitbox: Area2D = $aim_area
@@ -31,6 +31,7 @@ func _ready():
 	# Connect signals
 	signal_manager.connect("change_spawnpoint", self, "change_spawnpoint")
 	signal_manager.connect("respawn_player", self, "_on_respawn")
+	signal_manager.connect("go_to_spawn_and_freeze", self, "_on_go_to_spawn_and_freeze")
 	signal_manager.connect("fight_mode", self, "_on_fight_mode")
 	signal_manager.connect("enemy_killed", self, "_on_kill")
 	
@@ -41,7 +42,7 @@ func _enter_tree():
 
 func _physics_process(delta):
 	._physics_process(delta)
-	if state_manager.fighting && linear_velocity.length_squared() < 10.0:
+	if state_manager.fighting && linear_velocity.length_squared() < 3.0 && !is_respawned:
 		respawn()
 
 # Prevent the character from rotating
@@ -84,8 +85,7 @@ func throw_not_bird():
 	mode = RigidBody2D.MODE_RIGID
 	var speed = -shoot_pos
 	apply_central_impulse(speed * speed_modifier)
-	if state_manager.fighting: # Only take damage when fighting
-		set_health(health - 25)
+	is_respawned = false
 
 # Detect when the player starts to aim
 func _on_aim_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
@@ -104,16 +104,26 @@ func set_health(value: float):
 	health = value
 	signal_manager.emit_signal("player_damaged", health)
 	if health <= 0:
+		print("Mi presencia acido requerida")
 		respawn()
 		set_health(initial_health)
 
+func _on_respawn():
+	call_deferred("respawn")
+	
 func respawn():
+	go_to_spawn_and_freeze()
+	if health > 0 && state_manager.fighting: # Only take damage when fighting
+		set_health(health - 25)
+
+func go_to_spawn_and_freeze():
+	is_respawned = true
 	mode = RigidBody2D.MODE_KINEMATIC
 	global_transform.origin = spawn_point
 	reset_physics_interpolation()
 
-func _on_respawn():
-	call_deferred("respawn")
+func _on_go_to_spawn_and_freeze():
+	call_deferred("go_to_spawn_and_freeze")
 
 # When touching a checkpoint
 func change_spawnpoint(value: Vector2):

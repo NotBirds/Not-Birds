@@ -236,6 +236,7 @@ position = Vector2( 307, -657 )
 
 [node name="rbBird" parent="." index="3"]
 position = Vector2( 194, -62 )
+health = 100.0
 is_capsule = true
 capsule_health = 3
 
