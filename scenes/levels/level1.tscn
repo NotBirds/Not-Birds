@@ -2,48 +2,53 @@
 
 [ext_resource path="res://scenes/entities/levelObjects/checkpoint-2x1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/enemies/enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x30wooden.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/planks/4x30_wood.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Front.png" type="Texture" id=4]
 [ext_resource path="res://scenes/entities/levelObjects/wooden_platform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/levelObjects/camera_checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/lvl1/lvl1Back.png" type="Texture" id=7]
 [ext_resource path="res://scenes/entities/levelObjects/fight_zone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/inheritables/level.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/10x10empty_wood.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/entities/levelObjects/blocks/materials/wood/4x40wooden.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/entities/levelObjects/blocks/planks/4x40_wood.tscn" type="PackedScene" id=10]
 
-[sub_resource type="PhysicsMaterial" id=3]
-rough = true
-bounce = 1.0
-absorbent = true
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 68, 24.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 36, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 256, 160 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 224, 100 )
+extents = Vector2( 224, 75 )
 
 [node name="level" instance=ExtResource( 9 )]
 
 [node name="background" parent="geography" index="0"]
-visible = false
-position = Vector2( 952.5, -731.25 )
-scale = Vector2( 3.56699, 3.559 )
+position = Vector2( 618.5, -491.25 )
+scale = Vector2( 1.427, 1.424 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="foreground" parent="geography" index="1"]
-position = Vector2( 952.5, -731.25 )
-scale = Vector2( 3.56678, 3.55903 )
+position = Vector2( 618.5, -491.25 )
+scale = Vector2( 1.427, 1.424 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="level_collision" parent="geography" index="2"]
-physics_material_override = SubResource( 3 )
+[node name="wooden_platform" parent="geography" index="2" instance=ExtResource( 5 )]
+position = Vector2( 926, -733 )
+
+[node name="wooden_platform2" parent="geography" index="3" instance=ExtResource( 5 )]
+position = Vector2( 1077, -548 )
+
+[node name="Wood-platform" parent="geography/wooden_platform2" index="0"]
+scale = Vector2( -0.08, 0.08 )
 
 [node name="hole_stop1" type="CollisionPolygon2D" parent="geography/level_collision" index="0"]
 position = Vector2( -80, 170 )
@@ -54,40 +59,43 @@ position = Vector2( 300, 170 )
 polygon = PoolVector2Array( 1600, -300, 1600, -320, 1570, -320 )
 
 [node name="level_part1" type="CollisionPolygon2D" parent="geography/level_collision" index="2"]
-position = Vector2( 500, -1300 )
-polygon = PoolVector2Array( -948, 1748, 1804, 1756, 1804, 1108, 1292, 1108, 1292, 1004, 1800, 1000, 1800, 0, 2000, 0, 2000, 1800, -1100, 1800, -1100, -100, 900, -100, 900, -600, 1900, -600, 1900, -300, 1800, -300, 1800, -500, 1000, -490, 1000, 0, 436.908, 0, -1000, 0, -1000, 1000, 1100, 1000, 1100, 1108, -948, 1108 )
+position = Vector2( 442, -722 )
+polygon = PoolVector2Array( -379.2, 699.2, 721.6, 702.4, 721.6, 443.2, 516.8, 443.2, 516.8, 401.6, 720, 400, 720, 0, 800, 0, 800, 720, -440, 720, -440, -40, 360, -40, 360, -240, 760, -240, 760, -120, 720, -120, 720, -200, 400, -196, 400, 0, 174.763, 0, -400, 0, -400, 400, 440, 400, 440, 443.2, -379.2, 443.2 )
 
 [node name="level_part2_top" type="CollisionPolygon2D" parent="geography/level_collision" index="3"]
-polygon = PoolVector2Array( 2400, -1600, 4160, -1600, 4160, -1664, 2400, -1664 )
+position = Vector2( 219, -202 )
+polygon = PoolVector2Array( 960, -640, 1664, -640, 1664, -665.6, 960, -665.6 )
 
 [node name="level_part2_down" type="CollisionPolygon2D" parent="geography/level_collision" index="4"]
-polygon = PoolVector2Array( 2496, -1304, 2496, -1240, 4160, -1248, 4160, -1304 )
+position = Vector2( 219, -200 )
+polygon = PoolVector2Array( 998.4, -521.6, 998.4, -496, 1664, -499.2, 1664, -521.6 )
 
 [node name="level_part3_top" type="CollisionPolygon2D" parent="geography/level_collision" index="5"]
-polygon = PoolVector2Array( 4160, -1664, 4160, -2624, 5504, -2624, 5504, -2688, 4096, -2688, 4096, -1664 )
+position = Vector2( 218.56, -199.96 )
+polygon = PoolVector2Array( 1664, -665.6, 1664, -1049.6, 2201.6, -1049.6, 2201.6, -1075.2, 1638.4, -1075.2, 1638.4, -665.6 )
 
 [node name="level_part3_down" type="CollisionPolygon2D" parent="geography/level_collision" index="6"]
-polygon = PoolVector2Array( 4096, -1248, 4096, -256, 5504, -256, 5504, -1024, 5248, -1024, 5248, -384, 4928, -384, 4928, -1024, 4664, -1024, 4672, -384, 4416, -384, 4416, -1024, 4160, -1024, 4160, -1248 )
+position = Vector2( 218.56, -199.96 )
+polygon = PoolVector2Array( 1638.4, -499.2, 1638.4, -102.4, 2201.6, -102.4, 2201.6, -409.6, 2099.2, -409.6, 2099.2, -153.6, 1971.2, -153.6, 1971.2, -409.6, 1865.6, -409.6, 1868.8, -153.6, 1766.4, -153.6, 1766.4, -409.6, 1664, -409.6, 1664, -499.2 )
 
 [node name="level_part4" type="CollisionPolygon2D" parent="geography/level_collision" index="7"]
-polygon = PoolVector2Array( 5504, -2624, 7616, -2624, 7616, -896, 6464, -896, 6208, -704, 6080, -320, 6080, -1024, 5824, -1024, 5824, -320, 5504, -320, 5504, -256, 7680, -256, 7680, -2688, 5504, -2688 )
-
-[node name="wooden_platform" parent="geography/level_collision" index="8" instance=ExtResource( 5 )]
-position = Vector2( 1720, -1328 )
-
-[node name="wooden_platform2" parent="geography/level_collision" index="9" instance=ExtResource( 5 )]
-position = Vector2( 2088, -872 )
-
-[node name="Wood-platform" parent="geography/level_collision/wooden_platform2" index="0"]
-scale = Vector2( -0.2, 0.2 )
+position = Vector2( 218.56, -199.96 )
+polygon = PoolVector2Array( 2201.6, -1049.6, 3046.4, -1049.6, 3046.4, -358.4, 2585.6, -358.4, 2483.2, -281.6, 2432, -128, 2432, -409.6, 2329.6, -409.6, 2329.6, -128, 2201.6, -128, 2201.6, -102.4, 3072, -102.4, 3072, -1075.2, 2201.6, -1075.2 )
 
 [node name="fight_zone" parent="entities/fight_zones" index="0" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( 1536, -384 )
+position = Vector2( 925, -385 )
+
+[node name="CollisionShape2D" parent="entities/fight_zones/fight_zone/fight_mode_init" index="0"]
+position = Vector2( -5, 38.5 )
+shape = SubResource( 3 )
 
 [node name="bird_killer" parent="entities/fight_zones/fight_zone" index="1"]
 position = Vector2( 16, 152 )
 enabled = false
+
+[node name="CollisionShape2D" parent="entities/fight_zones/fight_zone/bird_killer" index="0"]
+position = Vector2( -20, -59 )
+shape = SubResource( 4 )
 
 [node name="win_audio" parent="entities/fight_zones/fight_zone" index="2"]
 bus = "Master"
@@ -96,13 +104,13 @@ bus = "Master"
 bus = "Master"
 
 [node name="enemy" parent="entities/fight_zones/fight_zone/enemies" index="0" instance=ExtResource( 2 )]
-position = Vector2( 435, -728 )
+position = Vector2( 308, -454 )
 
 [node name="enemy2" parent="entities/fight_zones/fight_zone/enemies" index="1" instance=ExtResource( 2 )]
-position = Vector2( 438, -908 )
+position = Vector2( 309, -567 )
 
 [node name="enemy5" parent="entities/fight_zones/fight_zone/enemies" index="2" instance=ExtResource( 2 )]
-position = Vector2( 437, -542 )
+position = Vector2( 308, -340 )
 
 [node name="new_spawnpoint" parent="entities/fight_zones/fight_zone" index="5"]
 position = Vector2( -112, 48 )
@@ -115,151 +123,138 @@ new_zoom = Vector2( 2, 2 )
 position = Vector2( 224, 240 )
 
 [node name="collision_shape" parent="entities/camera_checkpoints/camera_checkpoint/activation_area" index="0"]
-position = Vector2( 64, 496 )
+position = Vector2( 392, 70 )
 shape = SubResource( 1 )
 
 [node name="camera_checkpoint2" parent="entities/camera_checkpoints" index="1" instance=ExtResource( 6 )]
-position = Vector2( 1472, -512 )
-new_zoom = Vector2( 3, 3 )
+position = Vector2( 1138, -272 )
+new_zoom = Vector2( 2, 2 )
 
 [node name="camera_destination" parent="entities/camera_checkpoints/camera_checkpoint2" index="0"]
-position = Vector2( -520, -192 )
+position = Vector2( -530, -200 )
 
 [node name="collision_shape" parent="entities/camera_checkpoints/camera_checkpoint2/activation_area" index="0"]
-position = Vector2( 224, 100 )
+position = Vector2( -214, -129 )
 shape = SubResource( 2 )
 
 [node name="player_checkpoint2" parent="entities/player_checkpoints" index="0" instance=ExtResource( 1 )]
-position = Vector2( 1370, -300 )
+position = Vector2( 795, -329 )
 scale = Vector2( 1.72, 1 )
 
 [node name="player_checkpoint" parent="entities/player_checkpoints" index="1" instance=ExtResource( 1 )]
 position = Vector2( -40, 448 )
 
-[node name="wooden4x30" parent="entities/constructions" index="0" instance=ExtResource( 3 )]
-position = Vector2( 344, -391 )
-
-[node name="wooden4x31" parent="entities/constructions" index="1" instance=ExtResource( 3 )]
-position = Vector2( 528, -391 )
-
-[node name="wooden4x46" parent="entities/constructions" index="2" instance=ExtResource( 3 )]
-position = Vector2( 478, -391 )
-
-[node name="wooden4x47" parent="entities/constructions" index="3" instance=ExtResource( 3 )]
-position = Vector2( 394, -391 )
-
-[node name="wooden4x32" parent="entities/constructions" index="4" instance=ExtResource( 3 )]
-position = Vector2( 369, -391 )
-
-[node name="wooden4x33" parent="entities/constructions" index="5" instance=ExtResource( 3 )]
-position = Vector2( 503, -391 )
-
-[node name="wooden4x34" parent="entities/constructions" index="6" instance=ExtResource( 3 )]
-position = Vector2( 359, -574 )
-
-[node name="wooden4x35" parent="entities/constructions" index="7" instance=ExtResource( 3 )]
-position = Vector2( 511, -574 )
-
-[node name="wooden4x36" parent="entities/constructions" index="8" instance=ExtResource( 3 )]
-position = Vector2( 384, -574 )
-
-[node name="wooden4x37" parent="entities/constructions" index="9" instance=ExtResource( 3 )]
-position = Vector2( 486, -574 )
-
-[node name="rectangle4x30" parent="entities/constructions" index="10" instance=ExtResource( 11 )]
-position = Vector2( 435, -470 )
+[node name="4x30_wood" parent="entities/constructions" index="0" instance=ExtResource( 3 )]
+position = Vector2( 361, -366 )
 rotation = 1.57079
 
-[node name="rectangle4x38" parent="entities/constructions" index="11" instance=ExtResource( 11 )]
-position = Vector2( 435, -313 )
+[node name="4x30_wood2" parent="entities/constructions" index="1" instance=ExtResource( 3 )]
+position = Vector2( 349, -366 )
 rotation = 1.57079
 
-[node name="rectangle4x32" parent="entities/constructions" index="12" instance=ExtResource( 11 )]
-position = Vector2( 435, -495 )
+[node name="4x30_wood3" parent="entities/constructions" index="2" instance=ExtResource( 3 )]
+position = Vector2( 253, -366 )
 rotation = 1.57079
 
-[node name="rectangle4x31" parent="entities/constructions" index="13" instance=ExtResource( 11 )]
-position = Vector2( 435, -653 )
+[node name="4x30_wood4" parent="entities/constructions" index="3" instance=ExtResource( 3 )]
+position = Vector2( 265, -366 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="rectangle4x33" parent="entities/constructions" index="14" instance=ExtResource( 11 )]
-position = Vector2( 435, -678 )
+[node name="4x30_wood5" parent="entities/constructions" index="4" instance=ExtResource( 3 )]
+position = Vector2( 277, -366 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="wooden4x38" parent="entities/constructions" index="15" instance=ExtResource( 3 )]
-position = Vector2( 359, -757 )
-
-[node name="wooden4x39" parent="entities/constructions" index="16" instance=ExtResource( 3 )]
-position = Vector2( 511, -757 )
-
-[node name="wooden4x40" parent="entities/constructions" index="17" instance=ExtResource( 3 )]
-position = Vector2( 384, -757 )
-
-[node name="wooden4x41" parent="entities/constructions" index="18" instance=ExtResource( 3 )]
-position = Vector2( 486, -757 )
-
-[node name="rectangle4x34" parent="entities/constructions" index="19" instance=ExtResource( 11 )]
-position = Vector2( 435, -836 )
+[node name="4x30_wood6" parent="entities/constructions" index="5" instance=ExtResource( 3 )]
+position = Vector2( 337, -366 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="rectangle4x35" parent="entities/constructions" index="20" instance=ExtResource( 11 )]
-position = Vector2( 435, -861 )
+[node name="4x40_wood" parent="entities/constructions" index="6" instance=ExtResource( 10 )]
+position = Vector2( 307, -417 )
+
+[node name="4x40_wood2" parent="entities/constructions" index="7" instance=ExtResource( 10 )]
+position = Vector2( 307, -429 )
+
+[node name="4x30_wood7" parent="entities/constructions" index="8" instance=ExtResource( 3 )]
+position = Vector2( 361, -480 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="wooden4x42" parent="entities/constructions" index="21" instance=ExtResource( 3 )]
-position = Vector2( 359, -940 )
-
-[node name="wooden4x43" parent="entities/constructions" index="22" instance=ExtResource( 3 )]
-position = Vector2( 511, -940 )
-
-[node name="wooden4x44" parent="entities/constructions" index="23" instance=ExtResource( 3 )]
-position = Vector2( 384, -940 )
-
-[node name="wooden4x45" parent="entities/constructions" index="24" instance=ExtResource( 3 )]
-position = Vector2( 486, -940 )
-
-[node name="rectangle4x36" parent="entities/constructions" index="25" instance=ExtResource( 11 )]
-position = Vector2( 435, -1019 )
+[node name="4x30_wood8" parent="entities/constructions" index="9" instance=ExtResource( 3 )]
+position = Vector2( 349, -480 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="rectangle4x37" parent="entities/constructions" index="26" instance=ExtResource( 11 )]
-position = Vector2( 435, -1044 )
+[node name="4x30_wood9" parent="entities/constructions" index="10" instance=ExtResource( 3 )]
+position = Vector2( 253, -480 )
 rotation = 1.57079
-mass = 1.0
 
-[node name="plank2" parent="entities/constructions" index="27" instance=ExtResource( 10 )]
-position = Vector2( 248, -334 )
+[node name="4x30_wood10" parent="entities/constructions" index="11" instance=ExtResource( 3 )]
+position = Vector2( 265, -480 )
+rotation = 1.57079
 
-[node name="plank3" parent="entities/constructions" index="28" instance=ExtResource( 10 )]
-position = Vector2( 293, -334 )
+[node name="4x30_wood11" parent="entities/constructions" index="12" instance=ExtResource( 3 )]
+position = Vector2( 277, -480 )
+rotation = 1.57079
 
-[node name="plank4" parent="entities/constructions" index="29" instance=ExtResource( 10 )]
-position = Vector2( 293, -379 )
+[node name="4x30_wood12" parent="entities/constructions" index="13" instance=ExtResource( 3 )]
+position = Vector2( 337, -480 )
+rotation = 1.57079
 
-[node name="plank5" parent="entities/constructions" index="30" instance=ExtResource( 10 )]
-position = Vector2( 248, -379 )
+[node name="4x40_wood3" parent="entities/constructions" index="14" instance=ExtResource( 10 )]
+position = Vector2( 307, -531 )
 
-[node name="plank6" parent="entities/constructions" index="31" instance=ExtResource( 10 )]
-position = Vector2( 248, -424 )
+[node name="4x40_wood4" parent="entities/constructions" index="15" instance=ExtResource( 10 )]
+position = Vector2( 307, -543 )
+
+[node name="4x30_wood13" parent="entities/constructions" index="16" instance=ExtResource( 3 )]
+position = Vector2( 361, -594 )
+rotation = 1.57079
+
+[node name="4x30_wood14" parent="entities/constructions" index="17" instance=ExtResource( 3 )]
+position = Vector2( 349, -594 )
+rotation = 1.57079
+
+[node name="4x30_wood15" parent="entities/constructions" index="18" instance=ExtResource( 3 )]
+position = Vector2( 253, -594 )
+rotation = 1.57079
+
+[node name="4x30_wood16" parent="entities/constructions" index="19" instance=ExtResource( 3 )]
+position = Vector2( 265, -594 )
+rotation = 1.57079
+
+[node name="4x30_wood17" parent="entities/constructions" index="20" instance=ExtResource( 3 )]
+position = Vector2( 277, -594 )
+rotation = 1.57079
+
+[node name="4x30_wood18" parent="entities/constructions" index="21" instance=ExtResource( 3 )]
+position = Vector2( 337, -594 )
+rotation = 1.57079
+
+[node name="4x40_wood5" parent="entities/constructions" index="22" instance=ExtResource( 10 )]
+position = Vector2( 307, -645 )
+
+[node name="4x40_wood6" parent="entities/constructions" index="23" instance=ExtResource( 10 )]
+position = Vector2( 307, -657 )
 
 [node name="rbBird" parent="." index="3"]
-position = Vector2( 56, -450 )
+position = Vector2( 194, -62 )
+health = 100.0
 is_capsule = true
 capsule_health = 3
 
 [node name="sprite" parent="rbBird" index="0"]
 visible = false
+frame = 0
 
-[node name="capsule_sprite" parent="rbBird" index="8"]
+[node name="camera" parent="rbBird" index="6"]
+zoom = Vector2( 1.6, 1.6 )
+
+[node name="capsule_sprite" parent="rbBird" index="7"]
 visible = true
+scale = Vector2( 0.4, 0.4 )
 
-[editable path="geography/level_collision/wooden_platform2"]
+[editable path="geography/wooden_platform2"]
 [editable path="entities/fight_zones/fight_zone"]
+[editable path="entities/fight_zones/fight_zone/fight_mode_init"]
+[editable path="entities/fight_zones/fight_zone/bird_killer"]
 [editable path="entities/camera_checkpoints/camera_checkpoint"]
 [editable path="entities/camera_checkpoints/camera_checkpoint2"]
 [editable path="rbBird"]

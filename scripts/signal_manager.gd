@@ -4,6 +4,8 @@ extends Node
 
 signal player_damaged(health)
 
+signal go_to_spawn_and_freeze()
+
 signal respawn_player()
 
 signal change_spawnpoint(pos)
